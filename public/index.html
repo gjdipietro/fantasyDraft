@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Fantasy Draft</title>
+
+	<!--vendor-->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+	<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+	<script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-sanitize.js"></script>
+	
+	<!--appcore-->
+	<script src="/js/app.js"></script>
+	<script src="/js/routeConfig.js"></script>
+
+	<!--services-->
+	<script src="/js/core/playerService.js"></script>
+
+	<!--App features-->
+	<script src="/js/draft/draft.module.js"></script>
+	<script src="/js/draft/draft.controller.js"></script>
+
+
+	<base href="/">
+
+	<style>
+		@import 'https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700';
+		body {font-family: 'Roboto Condensed', sans-serif;}
+		h1, h2, h3, b, strong {font-weight: 700; color: #333; color: #ec5f67;}
+
+		body {
+		  margin: 0 auto;
+		  max-width: 50em;
+		  color: #555;
+		  line-height: 1.5;
+		}
+	</style>
+
+</head>
+<body ng-app="app">
+	<div ng-view></div>
+</body>
+</html>
