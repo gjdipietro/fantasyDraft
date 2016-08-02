@@ -11,7 +11,7 @@ var port = process.env.PORT || 1337;
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('*', function(req, res) {
-  res.sendFile('./public/index.html');
+  res.sendFile(__dirname + '/public/index.html');
 })
 
 app.use(function (req, res, next) {

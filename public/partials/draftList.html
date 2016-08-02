@@ -1,7 +1,10 @@
+<header>
+	<a href="">Home</a>
+	<a href="/recap">recap </a>
+</header>
+
 <h1>Draft List</h1>
 <pre style='position: absolute; right: 0; top:0; background:#EEEEEE; padding:20px;'>{{vm | json}}</pre>
 <div ng-repeat="player in vm.players">
 	<strong>{{player.firstName}} {{player.lastName}}</strong> ({{player.teamAbbr}})
 </div>
-
-<a href="/recap">recap </a>
