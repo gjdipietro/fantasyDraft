@@ -6,13 +6,26 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Fantasy Draft</title>
 
+
 	<!--vendor-->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
-	<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
-	<script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-sanitize.js"></script>
+	<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
 	
+	<script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyAkL9b0eJwOTZE_-A8Q9HfgwzbFx9-4rjo",
+	    authDomain: "fantasy-draft-a5cdb.firebaseapp.com",
+	    databaseURL: "https://fantasy-draft-a5cdb.firebaseio.com",
+	    storageBucket: "fantasy-draft-a5cdb.appspot.com",
+	  };
+	  firebase.initializeApp(config);
+	</script>
+    <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+
 	<!--appcore-->
 	<script src="/js/app.js"></script>
 	<script src="/js/routeConfig.js"></script>
@@ -23,28 +36,88 @@
 	<!--App features-->
 	<script src="/js/draft/draft.module.js"></script>
 	<script src="/js/draft/draft.controller.js"></script>
+	<script src="/js/league/league.module.js"></script>
+	<script src="/js/league/league.controller.js"></script>
 
-    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+
+
+    
 
 	<base href="/">
 
 	<style>
 		@import 'https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700';
 		body {font-family: 'Roboto Condensed', sans-serif;}
-		h1, h2, h3, b, strong {font-weight: 700; color: #333; color: #ec5f67;}
+		
+		h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+    		margin-top: 0;
+		}
+		h1, h2, h3, b {font-weight: 700; color: #333;}
 
 		body {
+		  background-color: #f6f6f6;
+		  color: #606571;
 		  margin: 0 auto;
-		  max-width: 50em;
-		  color: #555;
-		  line-height: 1.5;
+		  padding:0; 
+		  line-height: 1.5;    
+	      font-family: "pn_reg","Helvetica Neue",Helvetica,Arial,Sans-serif;
+		}
+
+		ul, li {
+		    margin: 0;
+		    padding: 0;
+		    list-style: none;
+		}
+		a {
+			color: #ec5f67;
+		}
+
+		.container {
+			max-width: 60em;
+			margin: 0 auto;
+		}
+		.globalHeader {
+			background: #fff;
+		    -webkit-box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
+		    box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
+		    height: 6.25em;
+		    position: relative;
+		    z-index: 2;
+		    margin-bottom: 2em;
+		}
+		.globalHeader-navigation {
+    		margin: 1.75em 0;
+		}
+			.globalHeader-nav-item {
+    			display: inline-block;
+    			padding: 2em;
+			}
+
+
+		.card {
+			background: #fff;
+		    -webkit-box-shadow: 0 0 1px 1px rgba(0,0,0,0.1);
+		    box-shadow: 0 0 1px 1px rgba(0,0,0,0.1);
+		    padding: 2em;
 		}
 	</style>
 
 </head>
 <body ng-app="app">
-	<div ng-view></div>
-
+	
+	<header class="globalHeader">
+		<nav>
+			<ul class="globalHeader-nav">
+				<li class="globalHeader-nav-item"><a href="/">Create League</a></li>
+				<li class="globalHeader-nav-item"><a href="/league/123/">Draft</a></li>
+				<li class="globalHeader-nav-item"><a href="/league/123/recap">recap</a></li>
+			</ul>
+		</nav>
+	</header>
+	
+	<div class="container">
+		<div ng-view></div>
+	</div>
 	
 
 </body>

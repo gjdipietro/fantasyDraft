@@ -24,7 +24,7 @@
         return resp;
       })
       .error(function(resp, status, headers, config) {
-      });    
+      }); 
     }
 
     function getPlayerHighlights(query) {

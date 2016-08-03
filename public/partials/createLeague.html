@@ -1,0 +1,37 @@
+<style>
+	.form {
+		margin: 0;
+		padding: 0;
+	}
+
+	.form-control {
+		display: block;
+		margin-bottom: 2em;
+	}
+		.form-control-label {
+			display: block;
+		}
+</style>
+
+
+<div class="card">
+	<h1>Create League</h1>
+	<form ng-submit="vm.createLeague(vm.league)">
+		<div class="form-control">
+			<label class="form-control-label"> Leage Name </label> 
+			<input type="text" ng-model="vm.league.name">
+		</div>
+
+		<div class="form-control">
+			<label class="form-control-label">  Teams (separate with comma) </label> 
+			<input type="text" ng-model="vm.league.teams">
+		</div>	
+
+		<div class="form-control">
+			<input type="submit" value="Create League">
+		</div>
+	</form>
+</div>
+<!--
+<youtube-player width="640" height="390" videoid="{{vm.youtubeCode}}"></youtube>
+-->

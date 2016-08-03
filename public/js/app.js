@@ -4,6 +4,8 @@
   angular
     .module('app', [
     	'ngRoute',
-    	'app.draft'
+    	'firebase',
+    	'app.draft',
+    	'app.league'
     ]);
 })();
