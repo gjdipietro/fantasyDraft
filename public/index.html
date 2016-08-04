@@ -12,8 +12,10 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-sanitize.js"></script>
 	<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
-	
 	<script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+	
 	<script>
 	  // Initialize Firebase
 	  var config = {
@@ -32,7 +34,8 @@
 
 	<!--services-->
 	<script src="/js/core/playerService.js"></script>
-
+	<script src="/js/core/firebaseDataService.js"></script>
+	
 	<!--App features-->
 	<script src="/js/draft/draft.module.js"></script>
 	<script src="/js/draft/draft.controller.js"></script>
@@ -47,20 +50,23 @@
 
 	<style>
 		@import 'https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700';
-		body {font-family: 'Roboto Condensed', sans-serif;}
-		
+
+		/*--------------------------*/
+		* {
+			box-sizing: border-box;
+		}
 		h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
     		margin-top: 0;
 		}
 		h1, h2, h3, b {font-weight: 700; color: #333;}
 
 		body {
-		  background-color: #f6f6f6;
+		  background-color: #f5efe6;
 		  color: #606571;
 		  margin: 0 auto;
 		  padding:0; 
 		  line-height: 1.5;    
-	      font-family: "pn_reg","Helvetica Neue",Helvetica,Arial,Sans-serif;
+	      font-family: 'Roboto Condensed', sans-serif;
 		}
 
 		ul, li {
@@ -71,54 +77,67 @@
 		a {
 			color: #ec5f67;
 		}
+		/*--------------------------*/
 
+
+
+		/*--------------------------*/
 		.container {
 			max-width: 60em;
 			margin: 0 auto;
 		}
+		/*--------------------------*/
+
+
+		/*--------------------------*/
+		.globalHeader-wrap {height: 40px; margin-bottom: 2em;}
 		.globalHeader {
-			background: #fff;
-		    -webkit-box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
-		    box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
-		    height: 6.25em;
-		    position: relative;
-		    z-index: 2;
-		    margin-bottom: 2em;
+			border-bottom: 1px solid rgba(0,0,0,0.1);
+		    background-color: rgba(251,248,245,0.98);
+		    padding: 0.5em;
+		    position: fixed;
+		    width: 100%;
+		    top: 0;
+			text-align: center;
+			z-index: 6;
+    
 		}
 		.globalHeader-navigation {
     		margin: 1.75em 0;
 		}
 			.globalHeader-nav-item {
     			display: inline-block;
-    			padding: 2em;
+    			padding: 0 1em;
 			}
+		/*--------------------------*/
 
 
+		/*--------------------------*/
 		.card {
-			background: #fff;
-		    -webkit-box-shadow: 0 0 1px 1px rgba(0,0,0,0.1);
-		    box-shadow: 0 0 1px 1px rgba(0,0,0,0.1);
+			position: relative;
+		    background: #FFF;
+		    box-shadow: 0 1px 3px 0 #bfbfbf;
+		    border-radius: 0.6rem;
 		    padding: 2em;
 		}
+		/*--------------------------*/
 	</style>
 
 </head>
 <body ng-app="app">
-	
-	<header class="globalHeader">
-		<nav>
-			<ul class="globalHeader-nav">
-				<li class="globalHeader-nav-item"><a href="/">Create League</a></li>
-				<li class="globalHeader-nav-item"><a href="/league/123/">Draft</a></li>
-				<li class="globalHeader-nav-item"><a href="/league/123/recap">recap</a></li>
-			</ul>
-		</nav>
-	</header>
-	
-	<div class="container">
-		<div ng-view></div>
+	<div class="globalHeader-wrap">
+		<header class="globalHeader">
+			<nav>
+				<ul class="globalHeader-nav">
+					<li class="globalHeader-nav-item"><a href="/">Create League</a></li>
+					<li class="globalHeader-nav-item"><a href="/league/123/">Draft</a></li>
+					<li class="globalHeader-nav-item"><a href="/league/123/recap">recap</a></li>
+				</ul>
+			</nav>
+		</header>
 	</div>
-	
-
+	<main class="container">
+		<div ng-view></div>
+	</main>
 </body>
 </html>

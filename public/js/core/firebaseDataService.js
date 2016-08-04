@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.core')
+    .module('app')
     .factory('firebaseDataService', firebaseDataService);
 
   function firebaseDataService() {
@@ -10,8 +10,7 @@
 
     var service = {
       root: root,
-      league_id: root.child('league_id'),
-      league_name: root.child('league_name'),
+      name: root.child('name'),
       teams: root.child('teams')
     };
 

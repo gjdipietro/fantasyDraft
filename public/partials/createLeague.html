@@ -1,9 +1,21 @@
 <style>
+textarea, input[type="text"], select {
+	transition: box-shadow 0.15s ease-in-out;
+	max-width: 100%;
+	border-radius: 0.4rem;
+	border: 1px solid #bfbfbf;
+	padding: .5em;
+	background-color: #fff;
+	font-family: inherit;
+	font-weight: inherit;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
 	.form {
 		margin: 0;
 		padding: 0;
 	}
-
 	.form-control {
 		display: block;
 		margin-bottom: 2em;
@@ -11,6 +23,8 @@
 		.form-control-label {
 			display: block;
 		}
+
+
 </style>
 
 
@@ -23,7 +37,7 @@
 		</div>
 
 		<div class="form-control">
-			<label class="form-control-label">  Teams (separate with comma) </label> 
+			<label class="form-control-label">Teams (separate with comma) </label> 
 			<input type="text" ng-model="vm.league.teams">
 		</div>	
 

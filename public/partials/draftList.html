@@ -1,6 +1,10 @@
-
-<h1>Draft List</h1>
-<pre style='position: absolute; right: 0; top:0; background:#EEEEEE; padding:20px;'>{{vm | json}}</pre>
-<div ng-repeat="player in vm.players">
-	<strong>{{player.rank}}: {{player.firstName}} {{player.lastName}}</strong> ({{player.teamAbbr}})
+<div class="card">
+	<h1>Draft List</h1>
+	<ul>
+		<li ng-repeat="player in vm.players">
+			<strong>{{player.rank}}: {{player.firstName}} {{player.lastName}}</strong> ({{player.teamAbbr}})
+		</li>
+	</ul>
 </div>
+
+<pre style='position: absolute; right: 0; top:0; background:#EEEEEE; padding:20px;'>{{vm | json}}</pre>

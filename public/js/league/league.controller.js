@@ -5,22 +5,23 @@ angular
   .module('app.league')
   .controller('LeagueController', LeagueController);
 
-  LeagueController.$inject = ['$firebaseObject'];
+  LeagueController.$inject = ['firebaseDataService'];
 
-  function LeagueController($firebaseObject) {
+  function LeagueController(firebaseDataService) {
     var vm = this;
     
     vm.league = {
       'name': 'FFP',
-      'teams': ['abc', 'def', 'ghi', 'mnop']
+      'teams': ['abc', 'bbb', 'asdasdf']
     };
-
     vm.createLeague = createLeague;
 
     function createLeague(league) {
-      sync.$add(league).then(function(newChildRef) {
-        $location.path('/league/'+newChildRef.key());
-      });
+      var newLeague = {
+        name: league.name,
+        teams : league.teams
+      };
+      firebaseDataService.root.push(newLeague);
     }
   }
 
