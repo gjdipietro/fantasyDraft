@@ -3,11 +3,11 @@
 
   angular
     .module('app.draft')
-    .controller('DraftController', DraftController)
+    .controller('DraftController', DraftController);
 
-  DraftController.$inject = ['$q', 'playerService'];
+  DraftController.$inject = ['$q', 'firebaseDataService', '$routeParams'];
 
-  function DraftController($q, playerService, playerPrepService) {
+  function DraftController($q, firebaseDataService, $routeParams) {
     var vm = this;
     vm.players = [];
     vm.youtubeCode = "";
@@ -15,23 +15,12 @@
     activate();
 
     function activate() {
-      var promises = [getPlayers(), getPlayerHighlights()];
+      var promises = [getPlayers(), getLeague()];
       return $q.all(promises).then(function() {
-        console.log('Activated players');
+        console.log($routeParams);
       });
     }
     
-    function getPlayers() {
-      return playerService
-        .getPlayers()
-        .then(assignPlayers);
-
-      function assignPlayers(resp) {
-        vm.players = resp.data.players;
-        return vm.players;
-      }
-    }
-
     function getPlayerHighlights() {
       return playerService
         .getPlayerHighlights()
@@ -45,9 +34,17 @@
       function getYoutubeCodeFailed(e) {
         return $q.reject(e);
       }
-    }  
+    }
+
+    function getLeague() {
+      console.log($routeParams);
+      // if (!parties) {
+      //   parties = $firebaseArray(firebaseDataService.users.child(uid).child('parties'));
+      // }
+      // return parties;
+    }
   }
 
-  
+      
 
 })();

@@ -4,7 +4,7 @@
   angular
     .module('app', [
     	'ngRoute',
-    	'firebase',
+    	'app.core',
     	'app.draft',
     	'app.league'
     ]);

@@ -1,51 +1,70 @@
 <style>
-textarea, input[type="text"], select {
-	transition: box-shadow 0.15s ease-in-out;
-	max-width: 100%;
-	border-radius: 0.4rem;
-	border: 1px solid #bfbfbf;
-	padding: .5em;
-	background-color: #fff;
-	font-family: inherit;
-	font-weight: inherit;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-}
+	textarea, input[type="text"], select {
+		transition: box-shadow 0.15s ease-in-out;
+		max-width: 100%;
+		border-radius: 0.4rem;
+		border: 1px solid #bfbfbf;
+		padding: .5em;
+		background-color: #fff;
+		font-family: inherit;
+		font-weight: inherit;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+	}
 
-	.form {
-		margin: 0;
-		padding: 0;
-	}
-	.form-control {
-		display: block;
-		margin-bottom: 2em;
-	}
-		.form-control-label {
-			display: block;
+		.form {
+			margin: 0;
+			padding: 0;
 		}
+		.form-control {
+			display: block;
+			margin-bottom: 2em;
+		}
+			.form-control-label {
+				display: block;
+			}
 
-
+	.flexContainer {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+		.flexContainer-child {
+			width: 50%;  /* Or whatever */
+		  	margin: auto 2%;  /* Magic! */
+		}
 </style>
 
+<div class="flexContainer">
+	<div class="card flexContainer-child">
+		<h1>Create League</h1>
+		<form ng-submit="vm.createLeague(vm.league)">
+			<div class="form-control">
+				<label class="form-control-label"> Leage Name </label> 
+				<input type="text" ng-model="vm.league.name">
+			</div>
 
-<div class="card">
-	<h1>Create League</h1>
-	<form ng-submit="vm.createLeague(vm.league)">
-		<div class="form-control">
-			<label class="form-control-label"> Leage Name </label> 
-			<input type="text" ng-model="vm.league.name">
-		</div>
+			<div class="form-control">
+				<input type="submit" value="Create League">
+			</div>
+		</form>
+	</div>
 
-		<div class="form-control">
-			<label class="form-control-label">Teams (separate with comma) </label> 
-			<input type="text" ng-model="vm.league.teams">
-		</div>	
+	<div class="card flexContainer-child">
+		<h1>Enter League With ID</h1>
+		<form ng-submit="vm.enterLeague(vm.league.id)">
+			<div class="form-control">
+				<label class="form-control-label"> Leage ID </label> 
+				<input type="text" ng-model="vm.league.id">
+			</div>
 
-		<div class="form-control">
-			<input type="submit" value="Create League">
-		</div>
-	</form>
+			<div class="form-control">
+				<input type="submit" value="Create League">
+			</div>
+		</form>
+	</div>
 </div>
+
 <!--
 <youtube-player width="640" height="390" videoid="{{vm.youtubeCode}}"></youtube>
 -->

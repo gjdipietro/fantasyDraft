@@ -13,7 +13,7 @@
         controllerAs: 'vm'
       })
       .when('/league/:id', {
-        templateUrl: '/partials/draftList.html',
+        templateUrl: '/partials/draft.html',
         controller: 'DraftController',
         controllerAs: 'vm',
       })
