@@ -14,14 +14,15 @@
     .module('app.core')
     .factory('firebaseDataService', firebaseDataService);
 
-  firebaseDataService.$inject = ['$firebaseArray'];
+  firebaseDataService.$inject = ['$firebaseArray', '$firebaseObject'];
 
-  function firebaseDataService($firebaseArray) {
+  function firebaseDataService($firebaseArray, $firebaseObject) {
     var db = firebase.database().ref();
     var service = {
       addLeague: addLeague,
       addTeamToLeague : addTeamToLeague,
-      getTeams: getTeams
+      getTeams: getTeams,
+      getLeagueInfo: getLeagueInfo
     };
     return service;
     
@@ -31,6 +32,15 @@
 
     function addTeamToLeague (team, leagueID) {
       return db.child('/leagues/' + leagueID).child('teams').push(team).key;
+    }
+
+    function getLeagueInfo(leagueID) {
+      var data = {};
+      var ref = db.child('/leagues/' + leagueID);
+      var teamsref = db.child('/leagues/' + leagueID + '/teams');
+      data = $firebaseObject(ref);
+      data.team = $firebaseArray(teamsref);
+      return data;
     }
 
     function getTeams(leagueID) {
