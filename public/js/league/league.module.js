@@ -1,5 +1,5 @@
 (function() {
   'use strict';
   
-  angular.module('app.league', []);
+  angular.module('app.league', ['ngCookies']);
 })();

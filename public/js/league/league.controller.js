@@ -13,7 +13,6 @@ angular
     vm.createLeague = createLeague;
     vm.enterLeague = enterLeague;
     
-
     function createLeague(league) {
       var newLeague = {
         "name": league.name
