@@ -21,6 +21,16 @@
       });
     }
     
+    function getPlayers() {
+      return playerService
+        .getPlayers()
+        .then(assignPlayers);
+
+      function assignPlayers(resp) {
+        newLeague.players = resp.data.players;
+        return newLeague.players;
+      }
+    }
     function getPlayerHighlights() {
       return playerService
         .getPlayerHighlights()

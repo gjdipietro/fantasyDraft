@@ -5,41 +5,32 @@ angular
   .module('app.league')
   .controller('LeagueController', LeagueController);
 
-  LeagueController.$inject = ['firebaseDataService', 'playerService', '$window'];
+  LeagueController.$inject = ['firebaseDataService', '$window'];
 
-  function LeagueController(firebaseDataService, playerService, $window) {
-    var vm = this;    
-    var newLeague = {
-      players: getPlayers(),
-      teams: [],
-      chat: []
-    };
+  function LeagueController(firebaseDataService, $window) {
+    var vm = this;   
 
     vm.createLeague = createLeague;
     vm.enterLeague = enterLeague;
+    
 
     function createLeague(league) {
-      newLeague.name = league.name;
-      firebaseDataService.root.push(newLeague);
-      redirectToLeague("-KORZaEGmp72YeGrS8-k");
-    }
-    
-    function getPlayers() {
-      return playerService
-        .getPlayers()
-        .then(assignPlayers);
-
-      function assignPlayers(resp) {
-        newLeague.players = resp.data.players;
-        return newLeague.players;
-      }
+      var newLeague = {
+        "name": league.name
+      };
+      var leagueID = firebaseDataService.addLeague(newLeague);
+      _redirectToLeague(leagueID);
     }
 
     function enterLeague(id) {
-      redirectToLeague(id);
+      _redirectToLeague(id);
     }
 
-    function redirectToLeague(id) {
+
+    ///////////////////////////////////////////
+    // PRIVATE FUNCTIONS
+    ///////////////////////////////////////////
+    function _redirectToLeague(id) {
       $window.location.href = '/league/' + id;
     }
   }

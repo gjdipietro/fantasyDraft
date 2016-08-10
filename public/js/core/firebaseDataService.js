@@ -15,14 +15,21 @@
     .factory('firebaseDataService', firebaseDataService);
 
   function firebaseDataService() {
-    var root = firebase.database().ref();
+    var db = firebase.database().ref();
     var service = {
-      root: root,
-      leagues: root.child('leagues'),
-      teams: root.child('leagues').child('teams')
+      addLeague: addLeague,
+      adTeamToLeague: addTeamToLeague
     };
 
     return service;
+    
+    function addLeague(league) {
+      return db.child('leagues').push(league).key;
+    }
+
+    function addTeamToLeague(team, id) {
+      db.ref('/leagues/' + id).push(team);
+    }
   }
 
 })();

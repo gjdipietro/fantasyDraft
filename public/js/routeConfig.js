@@ -8,13 +8,13 @@
   function config($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: '/partials/createLeague.html',
+        templateUrl: '/partials/createEnterLeague.html',
         controller: 'LeagueController',
         controllerAs: 'vm'
       })
       .when('/league/:id', {
-        templateUrl: '/partials/draft.html',
-        controller: 'DraftController',
+        templateUrl: '/partials/setupLeague.html',
+        controller: 'LeagueSetupController',
         controllerAs: 'vm',
       })
       .when('/league/:id/recap', {
