@@ -18,7 +18,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-cookies.min.js"></script>
 	<script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
 
-	
+
 	<!--bootstrap-->
 	<script src="/js/app.js"></script>
 	<script src="/js/routeConfig.js"></script>
@@ -119,8 +119,30 @@
 		    box-shadow: 0 1px 3px 0 #bfbfbf;
 		    border-radius: 0.6rem;
 		    padding: 2em;
+		    margin-bottom: 1em;
 		}
+
+		.list {
+		}
+			.list-item {
+				padding: 1em 0;
+				border-bottom: 1px solid #EEE;
+			}
+			.list-item:first-child {
+				padding-top: 0;
+			}
+			.list-item:last-child {
+				padding-bottom: 0;
+				border-bottom: none;
+			}
 		/*--------------------------*/
+
+		.message {
+			font-size: 1em;
+		}
+		.message_centered {
+			text-align: center;
+		}
 	</style>
 
 </head>

@@ -41,16 +41,6 @@ angular
 
     function getTeams(leagueID) {
       vm.teams = firebaseDataService.getTeams(leagueID);
-      // firebaseDataService.getTeams(leagueID)
-      //   .then(assignTeams);
-
-      // function assignTeams(snapshot) {
-      //   snapshot.forEach(function(childSnapshot) {
-      //     $timeout(function() {
-      //       vm.teams.push(childSnapshot.val());
-      //     });
-      //   });
-      // }
     }
 
     function startDraft() {

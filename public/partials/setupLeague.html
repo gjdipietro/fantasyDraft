@@ -1,16 +1,21 @@
 
 
 <div>
-	<h1>Teams</h1>
+	<h1>Teams <span ng-if="vm.teams.length">({{vm.teams.length}})</span></h1>
 	<form ng-if="vm.showAddTeamForm" ng-submit="vm.addTeamToLeague(vm.team, vm.leagueID)" class="card">
 		<label>Add Your team</label>
 		<input type="text" ng-model="vm.team.name"> 
 		<input type="submit" value="Add Team" />
 	</form>
-	
-	<ul>
-		<li class="card" ng-repeat="team in vm.teams">
-			{{team.name}}
-		</li>
-	</ul>
+
+	<div class="card">
+		<p class="message message_centered" ng-if="!vm.teams.length">Get everyone in the league to add their team.</p>
+		<ul class="list" ng-if="vm.teams.length">
+			<li class="list-item" ng-repeat="team in vm.teams">
+				{{team.name}}
+			</li>
+		</ul>
+	</div>
+
+	<p>League ID:<br> {{vm.leagueID}} </p>
 </div>
