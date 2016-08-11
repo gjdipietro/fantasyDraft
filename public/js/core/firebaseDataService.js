@@ -21,7 +21,7 @@
     var service = {
       addLeague: addLeague,
       addTeamToLeague : addTeamToLeague,
-      getTeams: getTeams,
+      getTeamInfo: getTeamInfo,
       getLeagueInfo: getLeagueInfo
     };
     return service;
@@ -31,20 +31,16 @@
     }
 
     function addTeamToLeague (team, leagueID) {
-      return db.child('/leagues/' + leagueID).child('teams').push(team).key;
+      return db.child('teams/' + leagueID).push(team).key;
     }
 
     function getLeagueInfo(leagueID) {
-      var data = {};
-      var ref = db.child('/leagues/' + leagueID);
-      var teamsref = db.child('/leagues/' + leagueID + '/teams');
-      data = $firebaseObject(ref);
-      data.team = $firebaseArray(teamsref);
-      return data;
+      var ref = db.child('leagues/' + leagueID);
+      return $firebaseObject(ref);
     }
 
-    function getTeams(leagueID) {
-      var ref = db.child('/leagues/' + leagueID).child('teams');
+    function getTeamInfo(leagueID) {
+      var ref = db.child('teams/' + leagueID);
       return $firebaseArray(ref);
     }
   }

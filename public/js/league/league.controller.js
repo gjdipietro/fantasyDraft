@@ -14,9 +14,7 @@ angular
     vm.enterLeague = enterLeague;
     
     function createLeague(league) {
-      var newLeague = {
-        "name": league.name
-      };
+      var newLeague = { "name": league.name };
       var leagueID = firebaseDataService.addLeague(newLeague);
       _redirectToLeague(leagueID);
     }

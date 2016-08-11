@@ -1,23 +1,23 @@
 
 <div>
-	<h1>{{vm.data.name}} <span ng-if="vm.teams.length">({{vm.teams.length}})</span></h1>
+	<h1>{{vm.leagueInfo.name}} <span ng-if="vm.teams.length">({{vm.teams.length}})</span></h1>
 	
-	<form ng-if="vm.showAddTeamForm" ng-submit="vm.addTeamToLeague(team, vm.data.$id)" class="card">
+	<form ng-if="vm.showAddTeamForm" ng-submit="vm.addTeamToLeague(team, vm.leagueInfo.$id)" class="card">
 		<label>Add Your team</label>
 		<input type="text" ng-model="team.name"> 
 		<input type="submit" value="Add Team" />
 	</form>
 
 	<div class="card">
-		<p class="message message_centered" ng-if="!vm.data.teams.length">Get everyone in the league to add their team.</p>
-		<ul class="list" ng-if="vm.data.teams.length">
-			<li class="list-item" ng-repeat="team in vm.data.teams">
+		<p class="message message_centered" ng-if="!vm.teams.length">Get everyone in the league to add their team.</p>
+		<ul class="list" ng-if="vm.teams.length">
+			<li class="list-item" ng-repeat="team in vm.teams">
 				{{team.name}}
 			</li>
 		</ul>
 	</div>
 
-	<p>League ID:<br> {{vm.data.$id}} </p>
+	<p>League ID:<br> {{vm.leagueInfo.$id}} </p>
 </div>
 
-<pre>{{vm.data | json}}</pre>
+<pre>{{vm | json}}</pre>

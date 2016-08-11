@@ -10,8 +10,7 @@ angular
   function LeagueSetupController($q, firebaseDataService, $routeParams, $cookies, $timeout, $firebaseArray, $firebaseObject) {
     var vm = this;   
 
-    vm.data = {};
-    vm.leagueName = "";
+    vm.leagueInfo = {};
     vm.leagueID = $routeParams.id;
     vm.showAddTeamForm = _showCanAddTeamForm($routeParams.id);
     vm.addTeamToLeague = addTeamToLeague;
@@ -22,14 +21,7 @@ angular
     function addTeamToLeague(team, leagueID) {
       var newTeam = {
         "name": team.name,
-        "players": {
-          "QB": [],
-          "RB": [],
-          "WR": [],
-          "TE": [],
-          "DEF": [],
-          "K": []
-        }
+        "league": leagueID
       };
 
       var myTeamID = firebaseDataService.addTeamToLeague(newTeam, leagueID);
@@ -41,7 +33,11 @@ angular
     }
 
     function getLeagueInfo(leagueID) {
-      vm.data = firebaseDataService.getLeagueInfo(leagueID);
+      vm.leagueInfo = firebaseDataService.getLeagueInfo(leagueID);
+    }
+
+    function getTeamInfo(leagueID) {
+      vm.teams = firebaseDataService.getTeamInfo(leagueID);
     }
 
     function startDraft() {
@@ -68,7 +64,7 @@ angular
     }
 
     function _activate() {
-      var promises = [getLeagueInfo($routeParams.id)];
+      var promises = [getLeagueInfo($routeParams.id), getTeamInfo($routeParams.id)];
       return $q.all(promises);
     }
 
