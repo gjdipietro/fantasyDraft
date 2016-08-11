@@ -22,7 +22,8 @@
       addLeague: addLeague,
       addTeamToLeague : addTeamToLeague,
       getTeamInfo: getTeamInfo,
-      getLeagueInfo: getLeagueInfo
+      getLeagueInfo: getLeagueInfo,
+      updateTeamInfo: updateTeamInfo
     };
     return service;
     
@@ -43,6 +44,11 @@
       var ref = db.child('teams/' + leagueID);
       return $firebaseArray(ref);
     }
+
+    function updateTeamInfo(updates, teamID, leagueID) {
+      return db.child('teams/' + leagueID + '/' + teamID).update(updates);
+    }
+    
   }
 
 })();

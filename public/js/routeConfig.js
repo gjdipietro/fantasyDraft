@@ -17,7 +17,12 @@
         controller: 'LeagueSetupController',
         controllerAs: 'vm',
       })
-      .when('/league/:id/recap', {
+      .when('/draft/:id/', {
+        templateUrl: '/partials/draft.html',
+        controller: 'DraftController',
+        controllerAs: 'vm'
+      })
+      .when('/draft/:id/recap', {
         templateUrl: '/partials/recap.html',
         controller: 'DraftController',
         controllerAs: 'vm'
