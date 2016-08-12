@@ -14,7 +14,7 @@ angular
     vm.leagueID = $routeParams.id;
     vm.showAddTeamForm = _showCanAddTeamForm($routeParams.id);
     vm.addTeamToLeague = addTeamToLeague;
-    vm.setDraftOrder = setDraftOrder;
+    vm.startDraft = startDraft;
     _activate();
 
     function addTeamToLeague(team, leagueID) {
@@ -39,10 +39,10 @@ angular
       vm.teams = firebaseDataService.getTeamInfo(leagueID);
     }
 
-    function setDraftOrder (teams, leagueID) {
-      shuffle(teams);
+    function startDraft(teams, leagueID) {
       var order = 1;
       var update = {};
+      shuffle(teams);
       teams.forEach(function(team){
         update = {"draftOrder" : order};
         firebaseDataService.updateTeamInfo(update, team.$id, leagueID);
@@ -67,16 +67,6 @@ angular
 
         return array;
       }
-    }
-
-    function startDraft() {
-      //get the teams in that league
-
-      // sort them
-
-      // display them 
-
-      // go to the draft page with that ordered array and league id
     }
 
     ///////////////////////////////////////////

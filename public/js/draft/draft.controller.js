@@ -5,32 +5,34 @@
     .module('app.draft')
     .controller('DraftController', DraftController);
 
-  DraftController.$inject = ['$q', 'firebaseDataService', '$routeParams'];
+  DraftController.$inject = ['$q', 'firebaseDataService', '$routeParams', 'playerService'];
 
-  function DraftController($q, firebaseDataService, $routeParams) {
+  function DraftController($q, firebaseDataService, $routeParams, playerService) {
     var vm = this;
     vm.players = [];
-    vm.youtubeCode = "";
 
     activate();
 
     function activate() {
-      var promises = [getPlayers(), getLeague()];
+      var promises = [getPlayers(), getPlayers(100), getLeague()];
       return $q.all(promises).then(function() {
-        console.log($routeParams);
+        //console.log($routeParams);
       });
     }
     
-    function getPlayers() {
+    function getPlayers(offset) {
       return playerService
-        .getPlayers()
+        .getPlayers(offset)
         .then(assignPlayers);
-
       function assignPlayers(resp) {
-        newLeague.players = resp.data.players;
-        return newLeague.players;
+        resp.data.players.forEach(function(x){
+          vm.players.unshift(x);
+        })
+        console.log(vm.players);
+        return vm.players;
       }
     }
+    
     function getPlayerHighlights() {
       return playerService
         .getPlayerHighlights()
@@ -47,7 +49,7 @@
     }
 
     function getLeague() {
-      console.log($routeParams);
+      //console.log($routeParams);
       // if (!parties) {
       //   parties = $firebaseArray(firebaseDataService.users.child(uid).child('parties'));
       // }

@@ -14,10 +14,14 @@
     };
     return service;
 
-    function getPlayers() {
+    function getPlayers(offset) {
+      var url = 'http://api.fantasy.nfl.com/v1/players/editordraftranks?format=json&count=100';
+      if (offset){
+        url += '&offset='+offset;
+      }
       return $http({
         method: 'GET', 
-        url: 'http://api.fantasy.nfl.com/v1/players/editordraftranks?format=json',
+        url: url,
         cache: true
       })
       .success(function(resp, status, headers, config) {
