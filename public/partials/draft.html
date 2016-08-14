@@ -17,10 +17,10 @@
 <h1>Draft List</h1>
 
 <div class="card">
-		<pre>{{vm.players[0] | json}}</pre>
+		<pre>{{vm.players[299] | json}}</pre>
 </div>
-
 <div class="card card_noPadding">
+	<h2>{{vm.players.length}}</h2>
 	<ul class="draftList">
 		<li ng-repeat="player in vm.players track by $index" class="playerRecord clearfix">
 			<div class="playerRecord-info">
@@ -32,4 +32,5 @@
 		</li>
 	</ul>
 </div>
+
 

@@ -14,24 +14,18 @@
     activate();
 
     function activate() {
-      var promises = [getPlayers(), getPlayers(100), getLeague()];
-      return $q.all(promises).then(function() {
-        //console.log($routeParams);
+      var promises = [getPlayers(), getPlayers(100), getPlayers(200)];
+      return $q.all(promises).then(function(resp) {
+        vm.players = vm.players
+          .concat(resp[0].data.players, resp[1].data.players, resp[2].data.players);
       });
     }
     
     function getPlayers(offset) {
       return playerService
         .getPlayers(offset)
-        .then(assignPlayers);
-      function assignPlayers(resp) {
-        resp.data.players.forEach(function(x){
-          vm.players.unshift(x);
-        })
-        console.log(vm.players);
-        return vm.players;
-      }
     }
+
     
     function getPlayerHighlights() {
       return playerService
