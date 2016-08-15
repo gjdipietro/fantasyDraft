@@ -1,11 +1,11 @@
 
-<div>
+<div class="container">
 	<h1>{{vm.leagueInfo.name}} <span ng-if="vm.teams.length">({{vm.teams.length}})</span></h1>
 	
 	<form ng-if="vm.showAddTeamForm" ng-submit="vm.addTeamToLeague(team, vm.leagueInfo.$id)" class="card">
 		<label>Add Your team</label>
 		<input type="text" ng-model="team.name"> 
-		<input type="submit" value="Add Team" />
+		<input type="submit" value="Add Team" class="btn" />
 	</form>
 
 	<div class="card">

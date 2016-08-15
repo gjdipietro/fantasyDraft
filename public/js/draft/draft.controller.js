@@ -10,7 +10,9 @@
   function DraftController($q, firebaseDataService, $routeParams, playerService) {
     var vm = this;
     vm.players = [];
-
+    vm.search = {
+      'position': ""
+    };
     activate();
 
     function activate() {
@@ -23,10 +25,18 @@
     
     function getPlayers(offset) {
       return playerService
-        .getPlayers(offset)
+        .getPlayers(offset);
     }
 
     
+
+
+
+
+
+
+
+
     function getPlayerHighlights() {
       return playerService
         .getPlayerHighlights()

@@ -1,36 +1,63 @@
-<style>
-	.playerRecord {
-		border-bottom: 1px solid #EEE;
-		padding: 1em;
-	}
-		.playerRecord:hover {
-			background:#EEE;
-		}
-		.playerRecord-info {
-			float: left;
-		}
-		.playerRecord-action {
-			float: right;
-		}
-</style>
-
-<h1>Draft List</h1>
 
 <div class="card">
-		<pre>{{vm.players[299] | json}}</pre>
+	<div class="container">
+		<div>
+			<input type="text" ng-model="vm.search.$" style="width: 100%; display: block; margin-bottom: 1em; padding: 1em;">	
+		</div>
+		<div>
+			<label for="All" class="radioToggle btn" ng-class="{'btn_active': vm.search.position == ''}"> All
+				<input type="radio" id="All" ng-model="vm.search.position" value="" name="position" /> 
+			</label>
+			<label for="QB" class="radioToggle btn" ng-class="{'btn_active': vm.search.position === 'qb'}"> QB
+				<input type="radio" id="QB" ng-model="vm.search.position" value="qb" name="position" /> 
+				<div class="radioToggle-indicator"></div>
+			</label>
+			<label for="RB" class="radioToggle btn" ng-class="{'btn_active': vm.search.position === 'rb'}"> RB 
+				<input type="radio" id="RB" ng-model="vm.search.position" value="rb" name="position" />
+				<div class="radioToggle-indicator"></div>
+			</label>
+			<label for="WR" class="radioToggle btn" ng-class="{'btn_active': vm.search.position === 'wr'}"> WR
+				<input type="radio" id="WR" ng-model="vm.search.position" value="wr" name="position" />
+				<div class="radioToggle-indicator"></div>
+			</label>
+			<label for="TE" class="radioToggle btn" ng-class="{'btn_active': vm.search.position === 'te'}"> TE
+				<input type="radio" id="TE" ng-model="vm.search.position" value="te" name="position" />
+				<div class="radioToggle-indicator"></div>
+			</label>
+			<label for="DEF" class="radioToggle  btn" ng-class="{'btn_active': vm.search.position === 'def'}"> DEF
+				<input type="radio" id="DEF" ng-model="vm.search.position" value="def" name="position" />
+				<div class="radioToggle-indicator"></div>
+			</label>
+			<label for="K" class="radioToggle btn" ng-class="{'btn_active': vm.search.position === 'k'}"> K 
+				<input type="radio" id="K" ng-model="vm.search.position" value="k" name="position" />
+				<div class="radioToggle-indicator"></div>
+			</label>
+		</div>	
+		
+	</div>
 </div>
-<div class="card card_noPadding">
-	<h2>{{vm.players.length}}</h2>
-	<ul class="draftList">
-		<li ng-repeat="player in vm.players track by $index" class="playerRecord clearfix">
-			<div class="playerRecord-info">
-				{{player.rank}}:
-				<strong>{{player.firstName}} {{player.lastName}}</strong> 
-				({{player.teamAbbr}})
-			</div>
-			<button class="playerRecord-action">Draft</button>
-		</li>
-	</ul>
+
+<div class="container">
+	<table class="table table_hasHover card card_noPadding" cellpadding="0" cellspacing="0">
+		<thead>
+			<tr class="table-header">
+				<th colspan="2">Player</th>
+				<th>Position</th>
+				<th width="5%">Taken</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="player in vm.players | filter:vm.search:strict">
+				<td width="3%">{{player.rank}}</td>
+				<td class="playerList-info">
+					<strong>{{player.firstName}} {{player.lastName}}</strong> 
+					({{player.teamAbbr}})
+				</td>
+				<td>{{player.position}}</td>
+				<td><button class="btn">Draft</button></td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 
 

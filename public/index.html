@@ -72,6 +72,31 @@
 		/*--------------------------*/
 
 
+		.btn {
+			background-color: #fff;
+    		border: 2px solid #DDD;
+    		color: #e97048;
+    		font-weight: 600;
+    		padding: .5em 1em;
+    		outline: 0;
+    		text-decoration: none;
+    		text-align: center;
+		}
+		.btn:hover, .btn:focus {
+			cursor: pointer;
+			text-decoration: none;
+		    -webkit-transition-duration: .2s;
+		    transition-duration: .2s;
+		    outline: 0;
+		    border-color: #e97048;
+		}
+		.btn:active, .btn.btn_active {
+			background-color: #e97048;
+		    border-color: #e97048;
+			color: #FFF;
+		}
+
+
 
 		/*--------------------------*/
 		.container {
@@ -145,12 +170,91 @@
 		.message_centered {
 			text-align: center;
 		}
+
+
+
+
+
+
+		textarea, input[type="text"], select {
+			transition: box-shadow 0.15s ease-in-out;
+			max-width: 100%;
+			border-radius: 0.4rem;
+			border: 2px solid #DDD;
+			padding: .5em;
+			background-color: #fff;
+			font-family: inherit;
+			font-weight: inherit;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+		}
+
+		.form {
+			margin: 0;
+			padding: 0;
+		}
+		.form-control {
+			display: block;
+			margin-bottom: 2em;
+		}
+			.form-control-label {
+				display: block;
+			}
+
+	.flexContainer {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+		.flexContainer-child {
+			width: 50%;  /* Or whatever */
+		  	margin: auto 2%;  /* Magic! */
+		}
+
+
+
+
+
+
+
+	.table {
+		width: 100%;
+	}
+	.table.table_hasHover tbody tr:hover {
+		background: rgba(255, 235, 59, 0.25);
+	}
+	.table td, .table th {
+		padding: 6px;
+		border-bottom: 1px solid #EEE;
+	}
+		.table-header {
+			background:#F4F4F4;
+			padding: 6px;
+			text-align:left;
+		}
+		.table-data_right {
+			text-align: right;
+		}
+
+
+
+
+
+
+		.radioToggle {
+			cursor: pointer;
+			display: inline-block;
+			text-align: center;
+		}
+		.radioToggle input[type="radio"] {
+			position:absolute;
+   	 		clip: rect(0,0,0,0);
+    		clip: rect(0 0 0 0);
+		}
 	</style>
 
 </head>
 <body ng-app="app">
-	<main class="container">
-		<div ng-view></div>
-	</main>
+	<main ng-view></main>
 </body>
 </html>
