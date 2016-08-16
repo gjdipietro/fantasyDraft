@@ -1,0 +1,12 @@
+/*------------------------------------*\
+    #LINK STYLES
+\*------------------------------------*/
+
+a {
+  color: $accent;
+  transition: color .3s ease-in-out;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}

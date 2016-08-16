@@ -1,0 +1,47 @@
+/*------------------------------------*\
+    #TYPOGRAPHY
+\*------------------------------------*/
+p, pre {
+	color: #000;
+	@include sizing(margin-bottom, $unit);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: $heavy;
+	margin: 0;
+}
+
+h1, h2, h3{
+  line-height: 4.8rem;
+  padding: .8rem 0 1.6rem;
+}
+
+h4, h5, h6{
+  padding: 2.4rem 0;
+}
+
+
+h1 {
+  @include font-size(36);
+}
+h2 {
+  @include font-size(32);
+}
+h3 {
+  @include font-size(28);
+}
+h4 {
+  @include font-size(20);
+}
+h5 {
+  @include font-size(18);
+}
+h6 {
+  @include font-size(1.6);
+}
+
+ol,
+ul{
+  margin-left: 2rem;
+  @include sizing(margin-bottom, $unit);
+}

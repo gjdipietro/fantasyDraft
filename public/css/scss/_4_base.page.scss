@@ -1,0 +1,36 @@
+/*------------------------------------*\
+    #BASE STYLES
+\*------------------------------------*/
+* { 
+	border: 0; 
+	font: inherit; 
+	margin: 0; 
+	padding: 0; 
+	text-rendering: geometricPrecision; 
+	-webkit-font-smoothing: antialiased; 
+	-moz-osx-font-smoothing: grayscale; 
+}
+
+html {
+	box-sizing: border-box;
+  	font-size:  62.5%;
+  	height: 100%;
+	@include breakpoint(full) {
+    	font-size: 78.125%;
+  	}
+}
+
+body {
+	background: $background;
+	font-family: $sanserif;
+	@include sizing(font-size, 1.6);
+  	line-height: $line-height;
+  	min-height: 100%;
+  	position: relative;
+}
+
+
+img {
+	min-width: 100%;
+}
+

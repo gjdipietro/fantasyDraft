@@ -1,0 +1,45 @@
+
+//colors
+$white: #FFFFFF;
+$black: #000000;
+$UI_black_lighter: #425153;
+$UI_black: #2A3334;
+$UI_black_darker: #222226;
+$accent: #E97048;
+$lightGrey: #CDCCCD;
+
+
+//Global settings
+$brand_color: $accent;
+$background: $black;
+
+// Button Colors;
+$secondaryBtn_bgcolor: $lightGrey;
+
+
+//Link colors
+$link_color: $accent;
+
+
+//spacing
+$unit_tiny: .6rem;
+$unit_small: 1.2rem;
+$unit: 2.4rem;
+$unit_big: 3.2rem;
+$unit_large: 4.8rem;
+$unit_huge: 7.2rem;
+
+//fonts & type
+$sanserif: 'Roboto', sans-serif;
+$light: 400;
+$heavy: 700;
+
+$font-size: 1.6rem;
+$font-size-small: 1.2rem !default;
+$font-size-large: 2rem !default;
+$line-height: 2.4rem;
+
+//break points
+$bp-full: 70em;
+$bp-medium: 40em;
+
