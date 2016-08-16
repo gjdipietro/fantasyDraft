@@ -13,10 +13,10 @@
       getPlayerHighlights: getPlayerHighlights
     };
     return service;
-
+    //http://api.fantasy.nfl.com/v1/players/advanced?season=2015&count=1&format=json&count=100
     function getPlayers(offset) {
       var url = 'http://api.fantasy.nfl.com/v1/players/editordraftranks?format=json&count=100';
-      if (offset){
+      if (offset) {
         url += '&offset='+offset;
       }
       return $http({
