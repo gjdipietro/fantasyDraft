@@ -10,14 +10,15 @@
   function DraftController($q, firebaseDataService, $routeParams, playerService) {
     var vm = this;
     vm.players = [];
-    vm.search = { 'position': "" };
+    vm.search = {'position': ""};
     vm.takenPlayers = [];
     vm.selected = {};
     
     //Interface
     vm.draftPlayer = draftPlayer;
     vm.selectPlayer = selectPlayer;
-
+    vm.clearSearch = clearSearch;
+    
     activate();
 
     function activate() {
@@ -36,25 +37,20 @@
         .getPlayers(offset);
     }
 
+    function clearSearch () {
+      vm.search.$ = "";
+    }
     function draftPlayer(player) {
+      var index = player.rank-1;
       vm.takenPlayers.push(player);
-      player.drafted = 1;
+      firebase.database().ref().child('players/' + index).update({'drafted': 1});
     }
 
     function selectPlayer(player) {
       vm.selected = player;
     }
 
-
-
-
-
-
-
-
-
-
-
+    ////////////////////////////////////////
     function getPlayerHighlights() {
       return playerService
         .getPlayerHighlights()

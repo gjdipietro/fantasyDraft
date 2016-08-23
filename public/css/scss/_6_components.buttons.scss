@@ -22,6 +22,18 @@
     border-color: $accent;
   }
 
+
+  .btn_clear {
+    background: none;
+    border: none;
+    color: $accentLight;
+    padding: 0;
+    &:active, &.btn_active {
+      background-color: inherit;
+      border-color: inherit;
+    }
+  }
+
 // .btn {
 // 	cursor: pointer;
 //   display: inline-block;

@@ -1,9 +1,21 @@
 
 <div class="container">
 	
-	<div class="u-marginBottom_large">
-		<input type="text" class="u-marginBottom_small one-full" placeholder="&#x2315 Search Players" ng-model="vm.search.$" >	
-		<div>
+	<form class="u-marginBottom_large">
+		<div class="search">
+			<label class="u-offScreen" for="search-query">Search query</label>
+			<input type="text" placeholder="Search Players" id="search-query" 
+							class="search u-marginBottom_small one-full" 
+							ng-model="vm.search.$" />
+
+			<button type="button" class="btn btn_clear search-inner" 
+					ng-click="vm.clearSearch()" 
+					ng-if="vm.search.$"> 
+				clear <span class="u-offScreen">Clear Search</span>
+			</button>
+		</div>
+		
+		<div class="filter">
 			<label for="All" class="hiddenInput btn" ng-class="{'btn_active': vm.search.position == ''}"> All
 				<input type="radio" id="All" class="hiddenInput-input" ng-model="vm.search.position" value="" name="position" /> 
 			</label>
@@ -26,14 +38,17 @@
 				<input type="radio" id="K" class="hiddenInput-input" ng-model="vm.search.position" value="k" name="position" />
 			</label>
 		</div>	
+	</form>
 
-	</div>
+	
 
-	 <div class="card">
+	<!-- <div class="card">
 		<strong>{{vm.selected.firstName}} {{vm.selected.lastName}}</strong>
 		<button class="btn" ng-if="vm.selected.drafted===0" ng-click="vm.draftPlayer(vm.selected)">Draft</button>
 		<div ng-if="vm.selected.drafted===1"></div>
 	</div>
+	 -->
+
 	<table class="table table_hasHover card card_noPadding" cellpadding="0" cellspacing="0">
 		<tbody>
 			<tr class="playerList"
@@ -42,7 +57,7 @@
 				ng-click="vm.selectPlayer(player)">
 
 				<td width="3%" class="u-textCenter">
-					{{player.rank}}.
+					{{player.rank}}. {{$index}}
 				</td>
 				<td class="playerList-info">
 					<span class="playerList-info-name">{{player.firstName}} {{player.lastName}}</span>
