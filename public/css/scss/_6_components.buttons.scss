@@ -1,13 +1,11 @@
 /* Buttons */
-
-
 .btn {
-  background-color: $white;
-  border: 2px solid $lightGrey;
-  color: $accent;
+  background-color: $accentLight;
+  border: 2px solid $accentLight;
+  color: $white;
   font-weight: $heavy;
   padding: 0 $unit;
-  line-height: $unit_large;
+  line-height: $unit;
   outline: 0;
   text-decoration: none;
   text-align: center;
@@ -22,7 +20,6 @@
   .btn:active, .btn.btn_active {
     background-color: $accent;
     border-color: $accent;
-    color: $white;
   }
 
 // .btn {

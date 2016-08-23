@@ -2,19 +2,20 @@
 //colors
 $white: #FFFFFF;
 $black: #000000;
-$UI_black_lighter: #425153;
-$UI_black: #2A3334;
-$UI_black_darker: #222226;
-$accent: #E97048;
-$lightGrey: #CDCCCD;
 
+$UI_base_lighter: #1F2C39;
+$UI_base: #151E29;
+$UI_base_darker: #09131F;
+
+$accentLight: #758795;
+$accent: #E97048;
 
 //Global settings
 $brand_color: $accent;
 $background: $black;
 
 // Button Colors;
-$secondaryBtn_bgcolor: $lightGrey;
+$secondaryBtn_bgcolor: $accentLight;
 
 
 //Link colors

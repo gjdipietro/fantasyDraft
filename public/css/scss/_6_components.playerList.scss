@@ -1,0 +1,21 @@
+.playerList {
+	border-left: green 4px solid;
+}
+	.playerList-info-name {
+		color: $white;
+	}
+	.playerList-info-team {
+		color: $accentLight;
+	}
+
+
+
+.playerList_taken {
+	border-color: $UI_base_lighter;
+	font-size: .75em;
+	opacity: .2;
+}
+	.playerList_taken td {
+		padding-top: 0;
+		padding-bottom: 0;
+	}

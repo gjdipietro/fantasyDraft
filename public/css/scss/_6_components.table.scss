@@ -1,0 +1,17 @@
+.table {
+	width: 100%;
+	td, th {
+		padding: 6px;
+		border-bottom: 1px solid $UI_base_lighter;
+	}
+}
+	.table-header {
+		background: $UI_base_darker;
+		padding: 6px;
+		text-align:left;
+	}
+
+	.table_hasHover tbody tr:hover {
+		background: $UI_base_lighter;
+	}
+

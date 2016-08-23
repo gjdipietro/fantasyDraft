@@ -1,0 +1,9 @@
+.card {
+	position: relative;
+    border: 1px solid $UI_base_darker;
+    padding: 2em;
+    margin-bottom: 1em;
+}
+	.card_noPadding {
+		padding:0;
+	}

@@ -1,0 +1,21 @@
+/*------------------------------------*\
+    #CONTAINER
+\*------------------------------------*/
+
+.container {
+	margin: 0 auto;
+  padding-right: $unit_small;
+  padding-left:  $unit_small;
+  max-width: 100%;
+  @include breakpoint(full) {
+    padding-right: $unit;
+    padding-left:  $unit;
+    @include sizing(max-width, 150rem); 
+  }
+}
+
+.typeContainer {
+    margin-left: auto;
+    margin-right: auto;
+    @include sizing(max-width, 60rem);
+}

@@ -1,0 +1,9 @@
+.hiddenInput {
+	cursor: pointer;
+ 	display: inline-block;
+}
+	.hiddenInput-input  {
+		position:absolute;
+	    clip: rect(0,0,0,0);
+	 	clip: rect(0 0 0 0);
+	}

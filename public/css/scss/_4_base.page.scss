@@ -21,12 +21,15 @@ html {
 }
 
 body {
-	background: $background;
+	background: $UI_base;
+	color: $white;
 	font-family: $sanserif;
 	@include sizing(font-size, 1.6);
   	line-height: $line-height;
   	min-height: 100%;
+  	margin: $unit;
   	position: relative;
+  	text-shadow: 1px 1px 0px $black;
 }
 
 
@@ -34,3 +37,17 @@ img {
 	min-width: 100%;
 }
 
+
+textarea, input[type="text"], select {
+	transition: box-shadow 0.15s ease-in-out;
+	max-width: 100%;
+	border-radius: 8px;
+	border-top: 3px solid;
+	border-color:$black;
+	padding: $unit/2;
+	background-color: $UI_base_darker;
+	font-family: inherit;
+	font-weight: inherit;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
