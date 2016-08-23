@@ -11,16 +11,24 @@
     var vm = this;
     vm.players = [];
     vm.search = { 'position': "" };
+    vm.takenPlayers = [];
+    vm.selected = {};
+    
+    //Interface
     vm.draftPlayer = draftPlayer;
+    vm.selectPlayer = selectPlayer;
 
     activate();
 
     function activate() {
-      var promises = [getPlayers(), getPlayers(100), getPlayers(200)];
-      return $q.all(promises).then(function(resp) {
-        vm.players = vm.players
-          .concat(resp[0].data.players, resp[1].data.players, resp[2].data.players);
-      });
+      vm.players = firebaseDataService.getPlayers();
+      
+      // var promises = [getPlayers(), getPlayers(100), getPlayers(200), getPlayers(300)];
+      // return $q.all(promises).then(function(resp) {
+      //   vm.players = vm.players
+      //     .concat(resp[0].data.players, resp[1].data.players, resp[2].data.players, resp[3].data.players);
+      //   vm.selected =  vm.players[0];
+      // });
     }
     
     function getPlayers(offset) {
@@ -29,9 +37,13 @@
     }
 
     function draftPlayer(player) {
-      return player.drafted = 1;
+      vm.takenPlayers.push(player);
+      player.drafted = 1;
     }
 
+    function selectPlayer(player) {
+      vm.selected = player;
+    }
 
 
 

@@ -1,10 +1,8 @@
 
-
 <div class="container">
 	
 	<div class="u-marginBottom_large">
 		<input type="text" class="u-marginBottom_small one-full" placeholder="&#x2315 Search Players" ng-model="vm.search.$" >	
-	
 		<div>
 			<label for="All" class="hiddenInput btn" ng-class="{'btn_active': vm.search.position == ''}"> All
 				<input type="radio" id="All" class="hiddenInput-input" ng-model="vm.search.position" value="" name="position" /> 
@@ -31,12 +29,18 @@
 
 	</div>
 
+	 <div class="card">
+		<strong>{{vm.selected.firstName}} {{vm.selected.lastName}}</strong>
+		<button class="btn" ng-if="vm.selected.drafted===0" ng-click="vm.draftPlayer(vm.selected)">Draft</button>
+		<div ng-if="vm.selected.drafted===1"></div>
+	</div>
 	<table class="table table_hasHover card card_noPadding" cellpadding="0" cellspacing="0">
 		<tbody>
 			<tr class="playerList"
 				ng-repeat="player in vm.players | filter:vm.search:strict" 
-				ng-class="{'playerList_taken': player.drafted === 1}">
-				
+				ng-class="{'playerList_taken': player.drafted === 1}" 
+				ng-click="vm.selectPlayer(player)">
+
 				<td width="3%" class="u-textCenter">
 					{{player.rank}}.
 				</td>

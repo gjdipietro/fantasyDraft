@@ -1,11 +1,13 @@
 .playerList {
 	border-left: green 4px solid;
+	font-size: 1em;
 }
 	.playerList-info-name {
 		color: $white;
 	}
 	.playerList-info-team {
 		color: $accentLight;
+	    font-size: .75em;
 	}
 
 

@@ -2,29 +2,25 @@
     #BASE STYLES
 \*------------------------------------*/
 * { 
-	border: 0; 
-	font: inherit; 
+	box-sizing: border-box;
 	margin: 0; 
 	padding: 0; 
-	text-rendering: geometricPrecision; 
-	-webkit-font-smoothing: antialiased; 
-	-moz-osx-font-smoothing: grayscale; 
 }
 
 html {
 	box-sizing: border-box;
   	font-size:  62.5%;
   	height: 100%;
-	@include breakpoint(full) {
-    	font-size: 78.125%;
-  	}
+	//	@include breakpoint(full) {
+ 	//		font-size: 78.125%;
+ 	//	}
 }
 
 body {
 	background: $UI_base;
 	color: $white;
 	font-family: $sanserif;
-	@include sizing(font-size, 1.6);
+	@include sizing(font-size, 1.4);
   	line-height: $line-height;
   	min-height: 100%;
   	margin: $unit;
@@ -42,10 +38,9 @@ textarea, input[type="text"], select {
 	transition: box-shadow 0.15s ease-in-out;
 	max-width: 100%;
 	border-radius: 8px;
-	border-top: 3px solid;
-	border-color:$black;
+	border: 3px solid $black;
 	padding: $unit/2;
-	background-color: $UI_base_darker;
+	background-color: $UI_base_lighter;
 	font-family: inherit;
 	font-weight: inherit;
 	-webkit-appearance: none;
