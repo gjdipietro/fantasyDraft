@@ -11,7 +11,8 @@
 			<button type="button" class="btn btn_clear search-inner" 
 					ng-click="vm.clearSearch()" 
 					ng-if="vm.search.$"> 
-				clear <span class="u-offScreen">Clear Search</span>
+				&#9447; 
+				<span class="u-offScreen">Clear Search</span>
 			</button>
 		</div>
 		
@@ -57,7 +58,7 @@
 				ng-click="vm.selectPlayer(player)">
 
 				<td width="3%" class="u-textCenter">
-					{{player.rank}}. {{$index}}
+					{{player.rank}}.
 				</td>
 				<td class="playerList-info">
 					<span class="playerList-info-name">{{player.firstName}} {{player.lastName}}</span>

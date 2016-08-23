@@ -10,19 +10,18 @@
   text-decoration: none;
   text-align: center;
   transition: border .2s ease-in;
-}
-  .btn:hover, .btn:focus {
+  &:hover, &:focus {
     cursor: pointer;
     text-decoration: none;
     outline: 0;
     border-color: $accent;
   }
-  .btn:active, .btn.btn_active {
+  &:active, &:btn_active {
     background-color: $accent;
     border-color: $accent;
   }
-
-
+}
+  
   .btn_clear {
     background: none;
     border: none;
