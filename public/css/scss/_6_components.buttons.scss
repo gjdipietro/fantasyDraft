@@ -16,7 +16,7 @@
     outline: 0;
     border-color: $accent;
   }
-  &:active, &:btn_active {
+  &:active, &.btn_active {
     background-color: $accent;
     border-color: $accent;
   }
