@@ -19,7 +19,6 @@
 	padding: $unit-large !important;
 }
 
-
 .u-marginTop_negative_small {
 	margin-top: $unit-small*-1 !important; 
 }
@@ -30,6 +29,9 @@
 	margin-top: $unit-large*-1 !important; 
 }
 
+.u-center {
+	margin: 0 auto;
+}
 
 /*------------------------------------*\
     #DEV ONLY

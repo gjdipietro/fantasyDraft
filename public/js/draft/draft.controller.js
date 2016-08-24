@@ -1,53 +1,37 @@
 (function() {
   'use strict';
 
-  angular
-    .module('app.draft')
-    .controller('DraftController', DraftController);
-
-  DraftController.$inject = ['$q', 'firebaseDataService', '$routeParams', 'playerService'];
-
-  function DraftController($q, firebaseDataService, $routeParams, playerService) {
+  function DraftController ($q, firebaseDataService, $routeParams, playerService, $firebaseArray, $firebaseObject) {
     var vm = this;
     vm.players = [];
-    vm.search = {'position': ""};
     vm.takenPlayers = [];
-    vm.selected = {};
-    
+    vm.league = {};
+    vm.search = {
+      'position': ''
+    };
     //Interface
     vm.draftPlayer = draftPlayer;
-    vm.selectPlayer = selectPlayer;
     vm.clearSearch = clearSearch;
-    
-    activate();
+    //activate
+    _activate();
 
-    function activate() {
+    function _activate() {
+      vm.players = getPlayers();
+      vm.league = getLeagueInfo($routeParams.id);
+    }
+    function getPlayers() {
       vm.players = firebaseDataService.getPlayers();
-      
-      // var promises = [getPlayers(), getPlayers(100), getPlayers(200), getPlayers(300)];
-      // return $q.all(promises).then(function(resp) {
-      //   vm.players = vm.players
-      //     .concat(resp[0].data.players, resp[1].data.players, resp[2].data.players, resp[3].data.players);
-      //   vm.selected =  vm.players[0];
-      // });
+      return vm.players;
     }
-    
-    function getPlayers(offset) {
-      return playerService
-        .getPlayers(offset);
-    }
-
-    function clearSearch () {
-      vm.search.$ = "";
+    function getLeagueInfo(leagueId) {
+      vm.league = firebaseDataService.getLeagueInfo(leagueId);
+      return vm.league;
     }
     function draftPlayer(player) {
-      var index = player.rank-1;
-      vm.takenPlayers.push(player);
-      firebase.database().ref().child('players/' + index).update({'drafted': 1});
+      firebaseDataService.draftPlayer(player);
     }
-
-    function selectPlayer(player) {
-      vm.selected = player;
+    function clearSearch () {
+      vm.search.$ = '';
     }
 
     ////////////////////////////////////////
@@ -65,16 +49,17 @@
         return $q.reject(e);
       }
     }
-
-    function getLeague() {
-      //console.log($routeParams);
-      // if (!parties) {
-      //   parties = $firebaseArray(firebaseDataService.users.child(uid).child('parties'));
-      // }
-      // return parties;
-    }
   }
 
-      
+  angular
+    .module('app.draft')
+    .controller('DraftController', DraftController);
+
+  DraftController.$inject = [
+    '$q',
+    'firebaseDataService',
+    '$routeParams',
+    '$firebaseArray',
+    '$firebaseObject'];
 
 })();

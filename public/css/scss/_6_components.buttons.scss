@@ -3,13 +3,15 @@
   background-color: $accentLight;
   border: 2px solid $accentLight;
   color: $white;
-  font-weight: $heavy;
+  @include sizing(font-size, 1.4);
+  font-weight: $heavy; 
   padding: 0 $unit;
   line-height: $unit;
   outline: 0;
   text-decoration: none;
   text-align: center;
-  transition: border .2s ease-in;
+  transition: border .2s ease-in, background .2s ease-in;
+  text-shadow: 1px 1px 0px $black;
   &:hover, &:focus {
     cursor: pointer;
     text-decoration: none;
@@ -22,6 +24,12 @@
   }
 }
   
+
+  .btn_large {
+    @include sizing(font-size, 1.6);
+    padding: $unit/2 $unit;
+  }
+
   .btn_clear {
     background: none;
     border: none;
@@ -32,49 +40,3 @@
       border-color: inherit;
     }
   }
-
-// .btn {
-// 	cursor: pointer;
-//   display: inline-block;
-//   font-family: $sanserif;
-//   padding: 0 $unit;
-//   height: $unit_large;
-//   line-height: $unit_large;
-//   text-decoration: none;
-//   white-space: nowrap;
-//   width: auto;
-// } 
-// 	.btn_primary {
-//     font-smoothing: antialiased;
-//     background-image: linear-gradient(lighten($primaryBtn_bgcolor, 5%), $primaryBtn_bgcolor);
-//     background-color: $primaryBtn_bgcolor;
-//     border: 1px solid darken($primaryBtn_bgcolor, 5%);
-//     color: $primaryBtn_txtcolor;
-//     &:hover {
-//       background-image: linear-gradient($primaryBtn_bgcolor, lighten($primaryBtn_bgcolor, 5%));
-//       background-color: darken($primaryBtn_bgcolor, 5%);
-//       border-color: darken($primaryBtn_bgcolor, 5%);
-//     }
-//     &:active {
-//       background-image: linear-gradient(darken($primaryBtn_bgcolor, 5%), $primaryBtn_bgcolor);
-//       background-color: darken($primaryBtn_bgcolor, 5%);
-//       border: 1px solid darken($primaryBtn_bgcolor, 5%);
-//     }
-// 	}
-// 	.btn_secondary {
-// 	  background: linear-gradient(lighten($secondaryBtn_bgcolor, 5%), $secondaryBtn_bgcolor);
-// 		background-color: $secondaryBtn_bgcolor;
-// 		border: 1px solid darken($secondaryBtn_bgcolor, 5%);
-// 		color: $secondaryBtn_txtcolor;
-//     &:hover {
-//       background: linear-gradient($secondaryBtn_bgcolor, lighten($secondaryBtn_bgcolor, 5%));
-//       border: 1px solid darken($secondaryBtn_bgcolor, 10%);
-//     }
-//     &:active {
-//       background-image: linear-gradient(darken($secondaryBtn_bgcolor, 5%), $secondaryBtn_bgcolor);
-//       background-color: darken($secondaryBtn_bgcolor, 5%);
-//     }
-// 	}
-
-
-

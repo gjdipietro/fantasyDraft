@@ -1,14 +1,13 @@
-
-<div class="container">
-	
-	<form class="u-marginBottom_large">
-		<div class="search">
+<div class="header clearfix u-marginBottom">
+	<h1 class="header-name">{{vm.league.name}}</h1>
+	<form class="header-tools">
+		<div class="inputInner inputInner_right">
 			<label class="u-offScreen" for="search-query">Search query</label>
 			<input type="text" placeholder="Search Players" id="search-query" 
-							class="search u-marginBottom_small one-full" 
-							ng-model="vm.search.$" />
+				class="inputInner-input u-marginBottom_small u-one-full" 
+				ng-model="vm.search.$" />
 
-			<button type="button" class="btn btn_clear search-inner" 
+			<button type="button" class="btn btn_clear inputInner-control" 
 					ng-click="vm.clearSearch()" 
 					ng-if="vm.search.$"> 
 				⌫
@@ -16,7 +15,7 @@
 			</button>
 		</div>
 		
-		<div class="filter">
+		<div>
 			<label for="All" class="hiddenInput btn" ng-class="{'btn_active': vm.search.position == ''}"> All
 				<input type="radio" id="All" class="hiddenInput-input" ng-model="vm.search.position" value="" name="position" /> 
 			</label>
@@ -40,36 +39,47 @@
 			</label>
 		</div>	
 	</form>
+</div>
 
+<div class="container">
+	<div style="width: 65%; float: left;">
+		
 	
+		<!-- <div class="card">
+			<strong>{{vm.selected.firstName}} {{vm.selected.lastName}}</strong>
+			<button class="btn" ng-if="vm.selected.drafted===0" ng-click="vm.draftPlayer(vm.selected)">Draft</button>
+			<div ng-if="vm.selected.drafted===1"></div>
+		</div>
+		 -->
+		<div class="card card_noPadding" style="min-height: 500px">
+			<table class="table table_hasHover">
+				<tbody>
+					<tr class="playerList"
+						ng-repeat="player in vm.players | filter:vm.search:strict" 
+						ng-class="{'playerList_taken': player.drafted === 1}" 
+						ng-click="vm.selectPlayer(player)">
 
-	<!-- <div class="card">
-		<strong>{{vm.selected.firstName}} {{vm.selected.lastName}}</strong>
-		<button class="btn" ng-if="vm.selected.drafted===0" ng-click="vm.draftPlayer(vm.selected)">Draft</button>
-		<div ng-if="vm.selected.drafted===1"></div>
+						<td width="3%" class="u-textCenter">
+							{{player.rank}}.
+						</td>
+						<td class="playerList-info">
+							<span class="playerList-info-name">{{player.firstName}} {{player.lastName}}</span>
+							<span class="playerList-info-team">{{player.teamAbbr}}</span> 
+						</td>
+						<td>{{player.position}}</td>
+						<td width="5%">
+							<button class="btn" ng-if="player.drafted===0" ng-click="vm.draftPlayer(player)">Draft</button>
+							<div ng-if="player.drafted===1"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
-	 -->
 
-	<table class="table table_hasHover card card_noPadding" cellpadding="0" cellspacing="0">
-		<tbody>
-			<tr class="playerList"
-				ng-repeat="player in vm.players | filter:vm.search:strict" 
-				ng-class="{'playerList_taken': player.drafted === 1}" 
-				ng-click="vm.selectPlayer(player)">
-
-				<td width="3%" class="u-textCenter">
-					{{player.rank}}.
-				</td>
-				<td class="playerList-info">
-					<span class="playerList-info-name">{{player.firstName}} {{player.lastName}}</span>
-					<span class="playerList-info-team">{{player.teamAbbr}}</span> 
-				</td>
-				<td>{{player.position}}</td>
-				<td width="5%">
-					<button class="btn" ng-if="player.drafted===0" ng-click="vm.draftPlayer(player)">Draft</button>
-					<div ng-if="player.drafted===1"></div>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+	<aside  style="width: 33%; margin-left: 2%; float: left">
+		<div class="card">
+			
+		</div>
+	</aside>
 </div>	

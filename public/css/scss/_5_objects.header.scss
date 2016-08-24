@@ -1,0 +1,29 @@
+.header {
+	background: $UI_base_darker;
+	border-bottom: 1px solid $black;
+	height: 60px;
+}
+	.header-name {
+    	vertical-align: middle;
+	    margin: 0 $unit;
+	    padding: 0;
+	    display: inline-block;
+        -webkit-flex: 0 0 auto;
+        flex: 0 0 auto;
+        -webkit-flex: 0 0 main-size;
+        flex: 0 0 main-size;
+        font-size: 1.5em;
+
+	}
+	.header-tools {
+		height: 60px;
+    	line-height: 58px;
+    	vertical-align: middle;
+		margin-left: 0!important;
+    	margin-right: 0!important;
+		display: inline-block;
+	    -webkit-flex: 0 0 auto;
+	    flex: 0 0 auto;
+	    -webkit-flex: 0 0 main-size;
+	    flex: 0 0 main-size;
+	}

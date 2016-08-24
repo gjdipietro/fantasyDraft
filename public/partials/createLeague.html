@@ -1,0 +1,31 @@
+
+<div class="header clearfix u-marginBottom">
+	<h1 class="header-name">Create League</h1>
+	<div class="header-tools"></div>
+</div>
+
+<div class="container">
+	<form ng-submit="vm.createLeague(vm.league)" class="card u-center u-two-third">
+		<div class="form-control">
+			<label class="form-control-label"> Leage Name </label> 
+			<input type="text" ng-model="vm.league.name" maxlength="20" value="Some League">
+		</div>
+
+		<div class="form-control">
+			<label class="form-control-label"> Teams </label> 
+			<input type="text" 
+				class="u-one-full"
+				placeholder="Separate Teams with comma" 
+				ng-model="vm.league.teams" />
+		</div>
+
+		<div class="form-control">
+			<input type="submit" value="Create League" class="btn btn_large btn_primary">
+		</div>
+	</form>
+</div>
+
+
+<!--
+<youtube-player width="640" height="390" videoid="{{vm.youtubeCode}}"></youtube>
+-->
