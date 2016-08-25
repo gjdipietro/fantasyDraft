@@ -13,11 +13,15 @@
 		display: none;
 	}
 	.header-search {
+		display: inline-block;
 		flex-grow: 5;
+		margin-left: $unit;
 	}
 	.header-filter { 
+		display: inline-block;
+		margin-left: $unit;
 		flex-grow: 1;
-		text-align: center;
+		text-align: left;
 	}
 
 @include breakpoint(medium) {

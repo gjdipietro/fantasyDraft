@@ -16,47 +16,49 @@
 				<span class="u-offScreen">Clear Search</span>
 			</button>
 		</div>
+		<div class="header-filter">
+			<div class="dropdown" ng-class="{'dropdown_open': toggle}">
+				<button type="button" class="dropdown-toggle btn btn_clear" ng-click="toggle=!toggle; $event.stopPropagation();">{{vm.positionDisplay}}</button>
+				<ul class="dropdown-menu">
+					<li>
+						<label for="All" class="hiddenInput dropdown-menu-item"> All
+							<input type="radio" id="All" class="hiddenInput-input" ng-model="vm.search.position" value="" name="position" /> 
+						</label>
+					</li>
+					<li>
+						<label for="QB" class="hiddenInput dropdown-menu-item"> QB
+							<input type="radio" id="QB" class="hiddenInput-input" ng-model="vm.search.position" value="qb" name="position" /> 
+						</label>
+					</li>
+					<li>
+						<label for="RB" class="hiddenInput dropdown-menu-item"> RB 
+							<input type="radio" id="RB" class="hiddenInput-input" ng-model="vm.search.position" value="rb" name="position" />
+						</label>
+					</li>
+					<li>
+						<label for="WR" class="hiddenInput dropdown-menu-item"> WR
+							<input type="radio" id="WR" class="hiddenInput-input" ng-model="vm.search.position" value="wr" name="position" />
+						</label>
+					</li>
+					<li>
+						<label for="TE" class="hiddenInput dropdown-menu-item"> TE
+							<input type="radio" id="TE" class="hiddenInput-input" ng-model="vm.search.position" value="te" name="position" />
+						</label>
+					</li>
+					<li>
+						<label for="DEF" class="hiddenInput dropdown-menu-item"> DEF
+							<input type="radio" id="DEF" class="hiddenInput-input" ng-model="vm.search.position" value="def" name="position" />
+						</label>
+					</li>
+					<li>
+						<label for="k" class="hiddenInput dropdown-menu-item"> K 
+							<input type="radio" id="k" class="hiddenInput-input" ng-model="vm.search.position" value="k" name="position" />
+						</label>
+					</li>
+				</ul>
+			</div>	
+		</div>
 		
-		<div class="dropdown header-filter" ng-class="{'dropdown_open': toggle}">
-			<button type="button" class="dropdown-toggle btn btn_clear" ng-click="toggle=!toggle; $event.stopPropagation();">{{vm.positionDisplay}}</button>
-			<ul class="dropdown-menu">
-				<li>
-					<label for="All" class="hiddenInput dropdown-menu-item"> All
-						<input type="radio" id="All" class="hiddenInput-input" ng-model="vm.search.position" value="" name="position" /> 
-					</label>
-				</li>
-				<li>
-					<label for="QB" class="hiddenInput dropdown-menu-item"> QB
-						<input type="radio" id="QB" class="hiddenInput-input" ng-model="vm.search.position" value="qb" name="position" /> 
-					</label>
-				</li>
-				<li>
-					<label for="RB" class="hiddenInput dropdown-menu-item"> RB 
-						<input type="radio" id="RB" class="hiddenInput-input" ng-model="vm.search.position" value="rb" name="position" />
-					</label>
-				</li>
-				<li>
-					<label for="WR" class="hiddenInput dropdown-menu-item"> WR
-						<input type="radio" id="WR" class="hiddenInput-input" ng-model="vm.search.position" value="wr" name="position" />
-					</label>
-				</li>
-				<li>
-					<label for="TE" class="hiddenInput dropdown-menu-item"> TE
-						<input type="radio" id="TE" class="hiddenInput-input" ng-model="vm.search.position" value="te" name="position" />
-					</label>
-				</li>
-				<li>
-					<label for="DEF" class="hiddenInput dropdown-menu-item"> DEF
-						<input type="radio" id="DEF" class="hiddenInput-input" ng-model="vm.search.position" value="def" name="position" />
-					</label>
-				</li>
-				<li>
-					<label for="k" class="hiddenInput dropdown-menu-item"> K 
-						<input type="radio" id="k" class="hiddenInput-input" ng-model="vm.search.position" value="k" name="position" />
-					</label>
-				</li>
-			</ul>
-		</div>	
 	</header>
 
 	<div class="container l-rightAside">
