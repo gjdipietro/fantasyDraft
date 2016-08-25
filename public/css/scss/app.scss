@@ -1,6 +1,44 @@
 /*------------------------------------*\
-    #YourHashtag
+    #FANTASY DRAFT BOARD
 \*------------------------------------*/
+
+/* ## SETTINGS ## */
+@import '_1_variables';
+
+// /* ## TOOLS ## */
+@import '_2_tools.mixins';
+
+// /* ## GENERIC ## */
+@import '_3_generic.normalize';
+
+// /* ## BASE ## */
+@import '_4_base.links';
+@import '_4_base.page';
+@import '_4_base.typography';
+
+// /* ## OBJECTS ## */
+@import '_5_objects.clearfix';
+@import '_5_objects.container';
+@import '_5_objects.header';
+
+
+// /* ## COMPONENTS ## */
+@import '_6_components.buttons';
+@import '_6_components.card';
+@import '_6_components.hiddenInput';
+@import '_6_components.table';
+@import '_6_components.playerList';
+@import '_6_components.forms';
+@import '_6_components.dropdown';
+
+/* ## TRUMPS ## */
+@import '_7_trumps.floats';
+@import '_7_trumps.spacing';
+@import '_7_trumps.type';
+@import '_7_trumps.widths';
+
+
+
 
 /**
 ## SETTINGS ##
@@ -48,40 +86,5 @@
    * Spacing
    * Show/Hide
 */
-
-/* ## SETTINGS ## */
-@import '_1_variables';
-
-// /* ## TOOLS ## */
-@import '_2_tools.mixins';
-
-// /* ## GENERIC ## */
-@import '_3_generic.normalize';
-
-// /* ## BASE ## */
-@import '_4_base.links';
-@import '_4_base.page';
-@import '_4_base.typography';
-
-// /* ## OBJECTS ## */
-@import '_5_objects.clearfix';
-@import '_5_objects.container';
-@import '_5_objects.header';
-
-
-// /* ## COMPONENTS ## */
-@import '_6_components.buttons';
-@import '_6_components.card';
-@import '_6_components.hiddenInput';
-@import '_6_components.table';
-@import '_6_components.playerList';
-@import '_6_components.forms';
-
-
-/* ## TRUMPS ## */
-@import '_7_trumps.floats';
-@import '_7_trumps.spacing';
-@import '_7_trumps.type';
-@import '_7_trumps.widths';
 
 

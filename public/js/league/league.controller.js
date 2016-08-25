@@ -5,7 +5,6 @@ function LeagueController(firebaseDataService, $window) {
   var vm = this;
 
   vm.createLeague = createLeague;
-  vm.enterLeague = enterLeague;
 
   function createLeague(league) {
     var newLeague = {
@@ -19,7 +18,7 @@ function LeagueController(firebaseDataService, $window) {
   // PRIVATE FUNCTIONS
   ///////////////////////////////////////////
   function _redirectToLeague(id) {
-    $window.location.href = '/league/' + id;
+    $window.location.href = '/draft/' + id;
   }
 }
 

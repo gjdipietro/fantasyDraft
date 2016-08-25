@@ -1,13 +1,14 @@
 (function() {
   'use strict';
 
-  function DraftController ($q, firebaseDataService, $routeParams, playerService, $firebaseArray, $firebaseObject) {
+  function DraftController ($scope, $q, firebaseDataService, $routeParams, playerService, $firebaseArray, $firebaseObject) {
     var vm = this;
     vm.players = [];
     vm.takenPlayers = [];
     vm.league = {};
     vm.search = {
-      'position': ''
+      'position': '',
+      'positionDisplay': 'All Players'
     };
     //Interface
     vm.draftPlayer = draftPlayer;
@@ -30,9 +31,35 @@
     function draftPlayer(player) {
       firebaseDataService.draftPlayer(player);
     }
+    //searching
     function clearSearch () {
       vm.search.$ = '';
     }
+    $scope.$watch('vm.search.position', function(value) {
+      switch (value) {
+        case '':
+          vm.search.positionDisplay = 'All Players';
+          break;
+        case 'qb':
+          vm.search.positionDisplay = 'Quarterbacks';
+          break;
+        case 'wr':
+          vm.search.positionDisplay = 'Wide Recievers';
+          break;
+        case 'rb':
+          vm.search.positionDisplay = 'Running Backs';
+          break;
+        case 'te':
+          vm.search.positionDisplay = 'Tight Ends';
+          break;
+        case 'def':
+          vm.search.positionDisplay = 'Defense';
+          break;
+        case 'k':
+          vm.search.positionDisplay = 'Kickers';
+          break;
+      }
+    });
 
     ////////////////////////////////////////
     function getPlayerHighlights() {
@@ -56,6 +83,7 @@
     .controller('DraftController', DraftController);
 
   DraftController.$inject = [
+    '$scope',
     '$q',
     'firebaseDataService',
     '$routeParams',

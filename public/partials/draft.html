@@ -1,45 +1,62 @@
-<div class="header clearfix u-marginBottom">
+<div ng-click="toggle=false">
+<header class="header clearfix u-marginBottom">
 	<h1 class="header-name">{{vm.league.name}}</h1>
-	<form class="header-tools">
-		<div class="inputInner inputInner_right">
+	<form>
+		<div class="inputInner inputInner_right header-search">
 			<label class="u-offScreen" for="search-query">Search query</label>
 			<input type="text" placeholder="Search Players" id="search-query" 
-				class="inputInner-input u-marginBottom_small u-one-full" 
+				class="inputInner-input" size="40" 
 				ng-model="vm.search.$" />
 
-			<button type="button" class="btn btn_clear inputInner-control" 
+			<button type="button" class="inputInner-control btn btn_clear" 
 					ng-click="vm.clearSearch()" 
-					ng-if="vm.search.$"> 
-				⌫
+					ng-if="vm.search.$"> ⌫
 				<span class="u-offScreen">Clear Search</span>
 			</button>
 		</div>
 		
-		<div>
-			<label for="All" class="hiddenInput btn" ng-class="{'btn_active': vm.search.position == ''}"> All
-				<input type="radio" id="All" class="hiddenInput-input" ng-model="vm.search.position" value="" name="position" /> 
-			</label>
-			<label for="QB" class="hiddenInput btn" ng-class="{'btn_active': vm.search.position === 'qb'}"> QB
-				<input type="radio" id="QB" class="hiddenInput-input" ng-model="vm.search.position" value="qb" name="position" /> 
-			</label>
-			<label for="RB" class="hiddenInput btn" ng-class="{'btn_active': vm.search.position === 'rb'}"> RB 
-				<input type="radio" id="RB" class="hiddenInput-input" ng-model="vm.search.position" value="rb" name="position" />
-			</label>
-			<label for="WR" class="hiddenInput btn" ng-class="{'btn_active': vm.search.position === 'wr'}"> WR
-				<input type="radio" id="WR" class="hiddenInput-input" ng-model="vm.search.position" value="wr" name="position" />
-			</label>
-			<label for="TE" class="hiddenInput btn" ng-class="{'btn_active': vm.search.position === 'te'}"> TE
-				<input type="radio" id="TE" class="hiddenInput-input" ng-model="vm.search.position" value="te" name="position" />
-			</label>
-			<label for="DEF" class="hiddenInput  btn" ng-class="{'btn_active': vm.search.position === 'def'}"> DEF
-				<input type="radio" id="DEF" class="hiddenInput-input" ng-model="vm.search.position" value="def" name="position" />
-			</label>
-			<label for="K" class="hiddenInput btn" ng-class="{'btn_active': vm.search.position === 'k'}"> K 
-				<input type="radio" id="K" class="hiddenInput-input" ng-model="vm.search.position" value="k" name="position" />
-			</label>
+		<div class="dropdown header-filter" ng-class="{'dropdown_open': toggle}">
+			<button type="button" class="dropdown-toggle btn btn_clear" ng-click="toggle=!toggle; $event.stopPropagation();">{{vm.search.positionDisplay}}</button>
+			<ul class="dropdown-menu">
+				<li>
+					<label for="All" class="hiddenInput dropdown-menu-item"> All
+						<input type="radio" id="All" class="hiddenInput-input" ng-model="vm.search.position" value="" name="position" /> 
+					</label>
+				</li>
+				<li>
+					<label for="QB" class="hiddenInput dropdown-menu-item"> QB
+						<input type="radio" id="QB" class="hiddenInput-input" ng-model="vm.search.position" value="qb" name="position" /> 
+					</label>
+				</li>
+				<li>
+					<label for="RB" class="hiddenInput dropdown-menu-item"> RB 
+						<input type="radio" id="RB" class="hiddenInput-input" ng-model="vm.search.position" value="rb" name="position" />
+					</label>
+				</li>
+				<li>
+					<label for="WR" class="hiddenInput dropdown-menu-item"> WR
+						<input type="radio" id="WR" class="hiddenInput-input" ng-model="vm.search.position" value="wr" name="position" />
+					</label>
+				</li>
+				<li>
+					<label for="TE" class="hiddenInput dropdown-menu-item"> TE
+						<input type="radio" id="TE" class="hiddenInput-input" ng-model="vm.search.position" value="te" name="position" />
+					</label>
+				</li>
+				<li>
+					<label for="DEF" class="hiddenInput dropdown-menu-item"> DEF
+						<input type="radio" id="DEF" class="hiddenInput-input" ng-model="vm.search.position" value="def" name="position" />
+					</label>
+				</li>
+				<li>
+					<label for="k" class="hiddenInput dropdown-menu-item"> K 
+						<input type="radio" id="k" class="hiddenInput-input" ng-model="vm.search.position" value="k" name="position" />
+					</label>
+				</li>
+			</ul>
 		</div>	
 	</form>
-</div>
+</header>
 
 <div class="container">
 	<div style="width: 65%; float: left;">
@@ -51,7 +68,7 @@
 			<div ng-if="vm.selected.drafted===1"></div>
 		</div>
 		 -->
-		<div class="card card_noPadding" style="min-height: 500px">
+		<div class="card card_noPadding">
 			<table class="table table_hasHover">
 				<tbody>
 					<tr class="playerList"
@@ -83,3 +100,4 @@
 		</div>
 	</aside>
 </div>	
+</div>
