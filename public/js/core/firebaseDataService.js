@@ -20,7 +20,7 @@
     var db = firebase.database().ref();
     var service = {
       addLeague: addLeague,
-      addTeamToLeague : addTeamToLeague,
+      addTeamsToLeague : addTeamsToLeague,
       getTeamInfo: getTeamInfo,
       getLeagueInfo: getLeagueInfo,
       updateTeamInfo: updateTeamInfo,
@@ -31,21 +31,25 @@
     function addLeague(league) {
       return db.child('leagues').push(league).key;
     }
+    function addTeamsToLeague (teams, leagueID) {
+      teams.forEach(function (team) {
+        return db.child('teams/' + leagueID).push(team);
+      });
+    }
+
     function getPlayers() {
-      var ref = db.child('players/');
-      return $firebaseArray(ref);
+      var players = db.child('players/');
+      return $firebaseArray(players);
     }
     function getLeagueInfo(leagueID) {
-      var ref = db.child('leagues/' + leagueID);
-      return $firebaseObject(ref);
+      var league = db.child('leagues/' + leagueID);
+      return $firebaseObject(league);
     }
     function draftPlayer (player) {
       var index = player.rank - 1;
       return db.child('players/' + index).update({'drafted': 1});
     }
-    function addTeamToLeague (team, leagueID) {
-      return db.child('teams/' + leagueID).push(team).key;
-    }
+    
     
 
     function getTeamInfo(leagueID) {

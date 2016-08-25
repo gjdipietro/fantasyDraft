@@ -1,14 +1,13 @@
 (function() {
   'use strict';
 
-  function DraftController ($scope, $q, firebaseDataService, $routeParams, playerService, $firebaseArray, $firebaseObject) {
+  function DraftController ($scope, $timeout, $q, firebaseDataService, $routeParams, playerService) {
     var vm = this;
     vm.players = [];
-    vm.takenPlayers = [];
     vm.league = {};
+    vm.positionDisplay = 'All Players';
     vm.search = {
-      'position': '',
-      'positionDisplay': 'All Players'
+      'position': ''
     };
     //Interface
     vm.draftPlayer = draftPlayer;
@@ -17,8 +16,8 @@
     _activate();
 
     function _activate() {
-      vm.players = getPlayers();
-      vm.league = getLeagueInfo($routeParams.id);
+      getPlayers();
+      getLeagueInfo($routeParams.id);
     }
     function getPlayers() {
       vm.players = firebaseDataService.getPlayers();
@@ -32,36 +31,41 @@
       firebaseDataService.draftPlayer(player);
     }
     //searching
-    function clearSearch () {
+    function clearSearch (clearAll, e) {
+      e.preventDefault();
       vm.search.$ = '';
+      if (clearAll) {
+        vm.search.position = '';
+      }
     }
+
     $scope.$watch('vm.search.position', function(value) {
       switch (value) {
         case '':
-          vm.search.positionDisplay = 'All Players';
+          vm.positionDisplay = 'All Players';
           break;
         case 'qb':
-          vm.search.positionDisplay = 'Quarterbacks';
+          vm.positionDisplay = 'Quarterbacks';
           break;
         case 'wr':
-          vm.search.positionDisplay = 'Wide Recievers';
+          vm.positionDisplay = 'Wide Recievers';
           break;
         case 'rb':
-          vm.search.positionDisplay = 'Running Backs';
+          vm.positionDisplay = 'Running Backs';
           break;
         case 'te':
-          vm.search.positionDisplay = 'Tight Ends';
+          vm.positionDisplay = 'Tight Ends';
           break;
         case 'def':
-          vm.search.positionDisplay = 'Defense';
+          vm.positionDisplay = 'Defense';
           break;
         case 'k':
-          vm.search.positionDisplay = 'Kickers';
+          vm.positionDisplay = 'Kickers';
           break;
       }
     });
 
-    ////////////////////////////////////////
+    //Wait
     function getPlayerHighlights() {
       return playerService
         .getPlayerHighlights()
@@ -84,10 +88,9 @@
 
   DraftController.$inject = [
     '$scope',
+    '$timeout',
     '$q',
     'firebaseDataService',
-    '$routeParams',
-    '$firebaseArray',
-    '$firebaseObject'];
-
+    '$routeParams'
+  ];
 })();

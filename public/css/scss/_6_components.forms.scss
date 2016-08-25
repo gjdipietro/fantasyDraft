@@ -16,6 +16,9 @@ textarea:focus, input[type="text"]:focus, select:focus {
 	outline: none;
 }
 
+.radio, .checkbox {
+	margin-right: $unit;
+}
 
 .form {
 	margin: 0;

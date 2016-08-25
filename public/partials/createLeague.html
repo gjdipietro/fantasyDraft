@@ -1,6 +1,6 @@
 
 <div class="header clearfix u-marginBottom">
-	<h1 class="header-name">Create League</h1>
+	<h1 class="header-name">Draft-o-matic! (brought to you by Garret Gator Boots)</h1>
 	<div class="header-tools"></div>
 </div>
 
@@ -18,7 +18,16 @@
 				placeholder="Separate Teams with comma" 
 				ng-model="vm.league.teams" />
 		</div>
+		<div class="form-control">
+			<label for="keep" class="radio">
+				<input type="radio" id="keep" name="resort" 
+				ng-model="vm.league.resort" value="keep"> Keep Order 
+			</label>
 
+			<label for="sort" class="radio">
+				<input type="radio" id="sort" name="resort" ng-model="vm.league.resort" value="sort"> Sort Teams
+			</label>
+		</div>
 		<div class="form-control">
 			<input type="submit" value="Create League" class="btn btn_large btn_primary">
 		</div>

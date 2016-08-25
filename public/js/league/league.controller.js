@@ -4,13 +4,24 @@
 function LeagueController(firebaseDataService, $window) {
   var vm = this;
 
+  vm.league = {};
+  vm.league.resort = 'keep';
+
   vm.createLeague = createLeague;
 
   function createLeague(league) {
+    //create the league
+    var leagueID;
     var newLeague = {
       'name': league.name
     };
-    var leagueID = firebaseDataService.addLeague(newLeague);
+    var teams = [];
+    leagueID = firebaseDataService.addLeague(newLeague);
+    teams = league.teams.match(/(?=\S)[^,]+?(?=\s*(,|$))/g);
+    if (league.resort === 'sort') {
+      _shuffle(teams);
+    }
+    firebaseDataService.addTeamsToLeague(teams, leagueID);
     _redirectToLeague(leagueID);
   }
 
@@ -19,6 +30,17 @@ function LeagueController(firebaseDataService, $window) {
   ///////////////////////////////////////////
   function _redirectToLeague(id) {
     $window.location.href = '/draft/' + id;
+  }
+  function _shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
   }
 }
 
