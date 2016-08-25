@@ -1,92 +1,91 @@
 <div ng-click="toggle = false" class="clearfix">
+	
 	<header class="header clearfix u-marginBottom">
-		<h1 class="header-name"><a href="#" role="button" ng-click="vm.clearSearch(true, $event)">{{vm.league.name}}</a></h1>
-		<form>
-			<div class="inputInner inputInner_right header-search">
-				<label class="u-offScreen" for="search-query">Search query</label>
-				<input type="text" placeholder="Search Players" id="search-query" 
-					class="inputInner-input" size="40" 
-					ng-model="vm.search.$" />
-
-				<button type="button" class="inputInner-control btn btn_clear" 
-						ng-click="vm.clearSearch(false, $event)" 
-						ng-if="vm.search.$"> ⌫
-					<span class="u-offScreen">Clear Search</span>
-				</button>
-			</div>
-			
-			<div class="dropdown header-filter" ng-class="{'dropdown_open': toggle}">
-				<button type="button" class="dropdown-toggle btn btn_clear" ng-click="toggle=!toggle; $event.stopPropagation();">{{vm.positionDisplay}}</button>
-				<ul class="dropdown-menu">
-					<li>
-						<label for="All" class="hiddenInput dropdown-menu-item"> All
-							<input type="radio" id="All" class="hiddenInput-input" ng-model="vm.search.position" value="" name="position" /> 
-						</label>
-					</li>
-					<li>
-						<label for="QB" class="hiddenInput dropdown-menu-item"> QB
-							<input type="radio" id="QB" class="hiddenInput-input" ng-model="vm.search.position" value="qb" name="position" /> 
-						</label>
-					</li>
-					<li>
-						<label for="RB" class="hiddenInput dropdown-menu-item"> RB 
-							<input type="radio" id="RB" class="hiddenInput-input" ng-model="vm.search.position" value="rb" name="position" />
-						</label>
-					</li>
-					<li>
-						<label for="WR" class="hiddenInput dropdown-menu-item"> WR
-							<input type="radio" id="WR" class="hiddenInput-input" ng-model="vm.search.position" value="wr" name="position" />
-						</label>
-					</li>
-					<li>
-						<label for="TE" class="hiddenInput dropdown-menu-item"> TE
-							<input type="radio" id="TE" class="hiddenInput-input" ng-model="vm.search.position" value="te" name="position" />
-						</label>
-					</li>
-					<li>
-						<label for="DEF" class="hiddenInput dropdown-menu-item"> DEF
-							<input type="radio" id="DEF" class="hiddenInput-input" ng-model="vm.search.position" value="def" name="position" />
-						</label>
-					</li>
-					<li>
-						<label for="k" class="hiddenInput dropdown-menu-item"> K 
-							<input type="radio" id="k" class="hiddenInput-input" ng-model="vm.search.position" value="k" name="position" />
-						</label>
-					</li>
-				</ul>
-			</div>	
-		</form>
+		<h1 class="header-name">
+			<a href="#" role="button" ng-click="vm.clearSearch(true, $event)">{{vm.league.name}}</a>
+		</h1>
+		
+		<div class="inputInner inputInner_right header-search">
+			<label class="u-offScreen" for="search-query">Search query</label>
+			<input type="text" placeholder="Search Players" id="search-query" 
+				class="inputInner-input u-one-full"
+				ng-model="vm.search.$" />
+			<button type="button" class="inputInner-control btn btn_clear" 
+					ng-click="vm.clearSearch(false, $event)" 
+					ng-if="vm.search.$"> ⌫
+				<span class="u-offScreen">Clear Search</span>
+			</button>
+		</div>
+		
+		<div class="dropdown header-filter" ng-class="{'dropdown_open': toggle}">
+			<button type="button" class="dropdown-toggle btn btn_clear" ng-click="toggle=!toggle; $event.stopPropagation();">{{vm.positionDisplay}}</button>
+			<ul class="dropdown-menu">
+				<li>
+					<label for="All" class="hiddenInput dropdown-menu-item"> All
+						<input type="radio" id="All" class="hiddenInput-input" ng-model="vm.search.position" value="" name="position" /> 
+					</label>
+				</li>
+				<li>
+					<label for="QB" class="hiddenInput dropdown-menu-item"> QB
+						<input type="radio" id="QB" class="hiddenInput-input" ng-model="vm.search.position" value="qb" name="position" /> 
+					</label>
+				</li>
+				<li>
+					<label for="RB" class="hiddenInput dropdown-menu-item"> RB 
+						<input type="radio" id="RB" class="hiddenInput-input" ng-model="vm.search.position" value="rb" name="position" />
+					</label>
+				</li>
+				<li>
+					<label for="WR" class="hiddenInput dropdown-menu-item"> WR
+						<input type="radio" id="WR" class="hiddenInput-input" ng-model="vm.search.position" value="wr" name="position" />
+					</label>
+				</li>
+				<li>
+					<label for="TE" class="hiddenInput dropdown-menu-item"> TE
+						<input type="radio" id="TE" class="hiddenInput-input" ng-model="vm.search.position" value="te" name="position" />
+					</label>
+				</li>
+				<li>
+					<label for="DEF" class="hiddenInput dropdown-menu-item"> DEF
+						<input type="radio" id="DEF" class="hiddenInput-input" ng-model="vm.search.position" value="def" name="position" />
+					</label>
+				</li>
+				<li>
+					<label for="k" class="hiddenInput dropdown-menu-item"> K 
+						<input type="radio" id="k" class="hiddenInput-input" ng-model="vm.search.position" value="k" name="position" />
+					</label>
+				</li>
+			</ul>
+		</div>	
 	</header>
 
-	<div class="container">
-		<div style="width: 65%; float: left;">
-			<div class="card card_noPadding">
-				<table class="table table_hasHover">
-					<tbody>
-						<tr class="playerList"
-							ng-repeat="player in vm.players | filter:vm.search:strict" 
-							ng-class="{'playerList_taken': player.drafted === 1}" 
-							ng-click="vm.selectPlayer(player)">
+	<div class="container l-rightAside">
+		<section class="l-rightAside-left">
+			<table class="table table_hasHover card card_noPadding">
+				<tbody>
+					<tr class="playerList"
+						ng-repeat="player in vm.players | filter:vm.search:strict" 
+						ng-class="{'playerList_taken': player.drafted === 1}" 
+						ng-click="vm.selectPlayer(player)">
 
-							<td width="3%" class="u-textCenter">
-								{{player.rank}}.
-							</td>
-							<td class="playerList-info">
-								<span class="playerList-info-name">{{player.firstName}} {{player.lastName}}</span>
-								<span class="playerList-info-team">{{player.teamAbbr}}</span> 
-							</td>
-							<td>{{player.position}}</td>
-							<td width="5%">
-								<button class="btn" ng-if="player.drafted===0" ng-click="vm.draftPlayer(player)">Draft</button>
-								<div ng-if="player.drafted===1"></div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
+						<td width="3%" class="u-textCenter">
+							{{player.rank}}.
+						</td>
+						<td class="playerList-info">
+							<span class="playerList-info-name">{{player.firstName}} {{player.lastName}}</span>
+							<span class="playerList-info-team">{{player.teamAbbr}}</span> 
+						</td>
+						<td>{{player.position}}</td>
+						<td width="5%">
+							<button class="btn" ng-if="player.drafted===0" ng-click="vm.draftPlayer(player)">Draft</button>
+							<div ng-if="player.drafted===1"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
 
-		<aside  style="width: 33%; margin-left: 2%; float: left">
+		<aside  class="l-rightAside-right">
 			<div class="card">
 				
 			</div>

@@ -3,18 +3,12 @@
 
   // Initialize Firebase
   var config = {
-    apiKey: "AIzaSyAkL9b0eJwOTZE_-A8Q9HfgwzbFx9-4rjo",
-    authDomain: "fantasy-draft-a5cdb.firebaseapp.com",
-    databaseURL: "https://fantasy-draft-a5cdb.firebaseio.com",
-    storageBucket: "fantasy-draft-a5cdb.appspot.com",
+    apiKey: 'AIzaSyAkL9b0eJwOTZE_-A8Q9HfgwzbFx9-4rjo',
+    authDomain: 'fantasy-draft-a5cdb.firebaseapp.com',
+    databaseURL: 'https://fantasy-draft-a5cdb.firebaseio.com',
+    storageBucket: 'fantasy-draft-a5cdb.appspot.com',
   };
   firebase.initializeApp(config);
-
-  angular
-    .module('app.core')
-    .factory('firebaseDataService', firebaseDataService);
-
-  firebaseDataService.$inject = ['$firebaseArray', '$firebaseObject'];
 
   function firebaseDataService($firebaseArray, $firebaseObject) {
     var db = firebase.database().ref();
@@ -49,9 +43,6 @@
       var index = player.rank - 1;
       return db.child('players/' + index).update({'drafted': 1});
     }
-    
-    
-
     function getTeamInfo(leagueID) {
       var ref = db.child('teams/' + leagueID);
       return $firebaseArray(ref);
@@ -59,7 +50,15 @@
     function updateTeamInfo(updates, teamID, leagueID) {
       return db.child('teams/' + leagueID + '/' + teamID).update(updates);
     }
-    
   }
+
+  angular
+    .module('app.core')
+    .factory('firebaseDataService', firebaseDataService);
+
+  firebaseDataService.$inject = [
+    '$firebaseArray',
+    '$firebaseObject'
+  ];
 
 })();

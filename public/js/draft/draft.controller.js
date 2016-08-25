@@ -28,7 +28,8 @@
       return vm.league;
     }
     function draftPlayer(player) {
-      firebaseDataService.draftPlayer(player);
+      if (confirm('Take ' + player.firstName + ' ' + player.lastName + '?'))
+        firebaseDataService.draftPlayer(player);
     }
     //searching
     function clearSearch (clearAll, e) {

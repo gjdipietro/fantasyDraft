@@ -30,10 +30,13 @@
 		.dropdown-menu-item {
 	    	display: block;
 	    	padding: $unit/2;
-	    	
+	    	&:hover {
+	    		background: $accentLight;
+	    	}
 	    }
 
 
 .dropdown_open .dropdown-menu {
 	display: block;
 }
+

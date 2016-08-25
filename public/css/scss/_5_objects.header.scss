@@ -1,23 +1,44 @@
 .header {
 	background: $UI_base_darker;
 	border-bottom: 1px solid $black;
+	padding: $unit/2 0;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
 }
-	.header-name, .header-search, .header-filter {
-		display: inline-block;
-		height: 60px;
-		line-height: 60px;
-		margin: 0 $unit/2;
-		padding: 0;
-		vertical-align: middle;
-		float: left;
-	}
 	.header-name {
-        font-size: 1.5em;
-        text-align: center;
+		display: none;
 	}
 	.header-search {
-	   
+		flex-grow: 5;
 	}
-	.header-filter {
-	   
+	.header-filter { 
+		flex-grow: 1;
+		text-align: center;
 	}
+
+@include breakpoint(medium) {
+	.header {
+		height: 60px;
+		padding: 0;
+	}
+		.header-name {
+			display: block;
+			font-size: 1.5em;
+	        text-align: center;
+	        padding: 0;
+	        flex-grow: 1;
+			align-self: center;
+		}
+		.header-search {
+			flex-grow: 5;
+			align-self: center;
+		}
+		.header-filter { 
+			flex-grow: 1;
+			align-self: center;
+		}
+}
