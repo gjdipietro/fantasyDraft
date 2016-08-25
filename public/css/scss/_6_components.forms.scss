@@ -1,3 +1,18 @@
+//General Form Setup
+.form {
+	margin: 0;
+	padding: 0;
+}
+	.form-control {
+		display: block;
+		margin-bottom: 2em;
+	}
+		.form-control-label {
+			display: block;
+		}
+
+
+// look and feel of inputs
 textarea, input[type="text"], select {
 	transition: box-shadow 0.15s ease-in-out;
 	max-width: 100%;
@@ -16,23 +31,19 @@ textarea:focus, input[type="text"]:focus, select:focus {
 	outline: none;
 }
 
+//radio and checkboxes
 .radio, .checkbox {
+	cursor: pointer;
+	min-height: $unit;
 	margin-right: $unit;
 }
 
-.form {
-	margin: 0;
-	padding: 0;
+input[type="radio"], input[type="checkbox"] {
+	vertical-align: sub;
 }
-	.form-control {
-		display: block;
-		margin-bottom: 2em;
-	}
-		.form-control-label {
-			display: block;
-		}
 
 
+// inputs inside a text field
 .inputInner {
 	position: relative;
 }
