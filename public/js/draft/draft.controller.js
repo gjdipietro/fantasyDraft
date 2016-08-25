@@ -12,9 +12,11 @@
     //Interface
     vm.draftPlayer = draftPlayer;
     vm.clearSearch = clearSearch;
-    //activate
     _activate();
 
+    /*============================
+    logic
+    =============================*/
     function _activate() {
       getPlayers();
       getLeagueInfo($routeParams.id);
@@ -27,9 +29,8 @@
       vm.league = firebaseDataService.getLeagueInfo(leagueId);
       return vm.league;
     }
-    function draftPlayer(player) {
-      if (confirm('Take ' + player.firstName + ' ' + player.lastName + '?'))
-        firebaseDataService.draftPlayer(player);
+    function draftPlayer(player, draft) {
+      firebaseDataService.draftPlayer(player, draft);
     }
     //searching
     function clearSearch (clearAll, e) {
@@ -65,6 +66,15 @@
           break;
       }
     });
+
+
+
+
+
+
+
+
+
 
     //Wait
     function getPlayerHighlights() {

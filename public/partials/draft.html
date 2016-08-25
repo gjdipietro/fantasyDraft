@@ -58,7 +58,6 @@
 				</ul>
 			</div>	
 		</div>
-		
 	</header>
 
 	<div class="container l-rightAside">
@@ -79,7 +78,7 @@
 						</td>
 						<td>{{player.position}}</td>
 						<td width="5%">
-							<button class="btn" ng-if="player.drafted===0" ng-click="vm.draftPlayer(player)">Draft</button>
+							<button class="btn" ng-if="player.drafted===0" ng-click="vm.draftPlayer(player, true)">Draft</button>
 							<div ng-if="player.drafted===1"></div>
 						</td>
 					</tr>

@@ -17,6 +17,11 @@
         controller: 'DraftController',
         controllerAs: 'vm'
       })
+      .when('/undraft/:id/', {
+        templateUrl: '/partials/undraft.html',
+        controller: 'DraftController',
+        controllerAs: 'vm'
+      })
       .when('/draft/:id/recap', {
         templateUrl: '/partials/recap.html',
         controller: 'DraftController',

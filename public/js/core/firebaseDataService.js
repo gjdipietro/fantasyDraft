@@ -39,9 +39,13 @@
       var league = db.child('leagues/' + leagueID);
       return $firebaseObject(league);
     }
-    function draftPlayer (player) {
+    function draftPlayer (player, draft) {
       var index = player.rank - 1;
-      return db.child('players/' + index).update({'drafted': 1});
+      if (!draft) { // this is an undraft
+        return db.child('players/' + index).update({'drafted': 0});
+      } else { // this is an normal draft
+        return db.child('players/' + index).update({'drafted': 1});
+      }
     }
     function getTeamInfo(leagueID) {
       var ref = db.child('teams/' + leagueID);
