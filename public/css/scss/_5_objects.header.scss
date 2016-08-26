@@ -23,14 +23,14 @@
 	.header-search {
 		display: inline-block;
 		order: 1; 
-		flex-grow: 1;
+		flex-grow: 2;
 		margin: 0 $unit/2;
 	}
 	.header-filter { 
 		display: inline-block;
 		order: 2; 
-		flex-grow: 1;
-		text-align: left;
+		flex-grow: 0;
+		margin: 0 $unit/2;
 	}
 
 @include breakpoint(medium) {
