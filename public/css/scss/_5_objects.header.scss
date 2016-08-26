@@ -1,61 +1,72 @@
+
 .header {
 	background: $UI_base_darker;
+	border-top: 3px solid $accent;
 	border-bottom: 1px solid $black;
 	display: table;
 	padding: $unit/2 0;
 	width: 100%;
 }
-	.header-name {
+	.header-name, .header-name_solo {
 		display: table-row;
-		height: 1%;
-		@include sizing(font-size, 1.8);
-  		line-height: $line-height;
+		height: $header-height/2;
+		line-height: $header-height/2;
+		@include sizing(font-size, 1.6);
 		padding: 0;
 		text-align: center;
+		a{
+			color: $white;
+		}
+	}
+	.header-name_solo {
+		display: block;
 	}
 	.header-tools {
 		display: table;
 		width: 100%;
 	}
-	.header-search {
-		display: table-cell;
-		margin: 0 auto;
-		width: 70%;
-	}
-	.header-filter {
-		display: table-cell;
-		margin: 0 auto;
-		width: 30%;
-		text-align: center;
-	}
+		.header-search {
+			display: table-cell;
+			margin: 0 auto;
+			width: 70%;
+		}
+		.header-filter {
+			display: table-cell;
+			margin: 0 auto;
+			width: 30%;
+			text-align: center;
+		}
 
-@include breakpoint(medium) {
+@include breakpoint(full) {
 	.header {
 		display: table;
-		height: $header-height;;
+		height: $header-height;
 		padding: 0;
 		width: 100%;
 	}
-	.header-tools {
-		height: $header-height;
-	}
-	.header-name {
-		@include sizing(font-size, 2);
-		display: table-cell;
-		margin: 0 $unit/2;
-		vertical-align: middle;
-		width: 15%;
-	}
-	.header-search {
-		display: table-cell;
-		width: 70%;
-		margin: 0 $unit/2;
-		vertical-align: middle;
-	}
-	.header-filter { 
-		display: table-cell;	
-		margin: 0 $unit/2;
-		vertical-align: middle;
-		width: 15%;
-	}
+		.header-name {
+			display: table-cell;
+			margin: 0 $unit/2;
+			vertical-align: middle;
+			width: 15%;
+		}
+		.header-name_solo {
+			padding: 0;
+    		line-height: $header-height;
+		}
+		.header-tools {
+			height: $header-height;
+		}
+			.header-search {
+				display: table-cell;
+				width: 70%;
+				margin: 0 $unit/2;
+				vertical-align: middle;
+			}
+			.header-filter { 
+				display: table-cell;	
+				margin: 0 $unit/2;
+				vertical-align: middle;
+				width: 15%;
+			}
 }

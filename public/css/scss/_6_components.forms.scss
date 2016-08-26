@@ -37,9 +37,6 @@ textarea:focus, input[type="text"]:focus, select:focus {
 	min-height: $unit;
 	margin-right: $unit;
 }
-input[type="radio"], input[type="checkbox"] {
-	vertical-align: sub;
-}
 
 
 // inner elements in a text field
