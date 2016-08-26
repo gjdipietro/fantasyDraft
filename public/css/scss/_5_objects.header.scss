@@ -23,13 +23,12 @@
 	.header-search {
 		display: inline-block;
 		order: 1; 
-		flex-grow: 5;
-		margin-left: $unit;
+		flex-grow: 1;
+		margin: 0 $unit/2;
 	}
 	.header-filter { 
 		display: inline-block;
 		order: 2; 
-		margin-left: $unit;
 		flex-grow: 1;
 		text-align: left;
 	}
@@ -43,12 +42,13 @@
 	}
 	.header-search {
 		order: 1;
-		flex-grow: 5;
+		flex-grow: 4;
 		align-self: center;
 	}
 	.header-filter { 
-		order: 2;
-		flex-grow: 1;
 		align-self: center;
+		flex-grow: 1;
+		order: 2;
+		margin-left: $unit;
 	}
 }
