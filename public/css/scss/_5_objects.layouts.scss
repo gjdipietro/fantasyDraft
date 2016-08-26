@@ -10,13 +10,12 @@
 
 	}
 
-
 @include breakpoint(medium) {
-	background: blue;
+	
 }
 
 @include breakpoint(full) {
-	background: red;
+
 }
 
 

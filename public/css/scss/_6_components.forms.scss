@@ -1,4 +1,4 @@
-//General Form Setup
+// General form layout
 .form {
 	margin: 0;
 	padding: 0;
@@ -12,8 +12,8 @@
 		}
 
 
-// look and feel of inputs
-textarea, input, button {
+// Look feel of specific form elemements
+textarea, input[type="button"], input[type="text"], input[type="email"], input[type="search"], input[type="tel"], input[type="password"], button {
 	-webkit-appearance:none; 
     -webkit-border-radius:0;
 }
@@ -32,20 +32,17 @@ textarea:focus, input[type="text"]:focus, select:focus {
 	border: 3px solid $black;
 	outline: none;
 }
-
-//radio and checkboxes
 .radio, .checkbox {
 	cursor: pointer;
 	min-height: $unit;
 	margin-right: $unit;
 }
-
 input[type="radio"], input[type="checkbox"] {
 	vertical-align: sub;
 }
 
 
-// inputs inside a text field
+// inner elements in a text field
 .inputInner {
 	position: relative;
 }
