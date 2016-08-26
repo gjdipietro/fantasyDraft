@@ -13,6 +13,10 @@
 
 
 // look and feel of inputs
+textarea, input, button {
+	-webkit-appearance:none; 
+    -webkit-border-radius:0;
+}
 textarea, input[type="text"], select {
 	transition: box-shadow 0.15s ease-in-out;
 	max-width: 100%;
@@ -22,8 +26,6 @@ textarea, input[type="text"], select {
 	font-family: inherit;
 	font-weight: inherit;
 	padding: $unit/2;
-	-webkit-appearance: none;
-	-moz-appearance: none;
 }
 textarea:focus, input[type="text"]:focus, select:focus {
 	background-color: lighten($UI_base_lighter, 5%);
