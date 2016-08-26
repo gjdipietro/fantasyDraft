@@ -1,54 +1,61 @@
 .header {
 	background: $UI_base_darker;
 	border-bottom: 1px solid $black;
+	display: table;
 	padding: $unit/2 0;
-	display: flex;
-    flex-flow: row wrap;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
+	width: 100%;
 }
 	.header-name {
-		display: block;
-		order: 0;
+		display: table-row;
+		height: 1%;
 		@include sizing(font-size, 1.8);
   		line-height: $line-height;
-		min-width: 100%;
 		padding: 0;
-		flex: 0 4 auto;
-    	align-self: center;
-    	text-align: center;
+		text-align: center;
+	}
+	.header-tools {
+		display: table;
+		width: 100%;
 	}
 	.header-search {
-		display: inline-block;
-		order: 1; 
-		flex-grow: 2;
-		margin: 0 $unit/2;
+		display: table-cell;
+		margin: 0 auto;
+		width: 70%;
 	}
-	.header-filter { 
-		display: inline-block;
-		order: 2; 
-		flex-grow: 0;
-		margin: 0 $unit/2;
+	.header-filter {
+		display: table-cell;
+		margin: 0 auto;
+		width: 30%;
+		text-align: center;
 	}
 
 @include breakpoint(medium) {
+	.header {
+		display: table;
+		height: $header-height;;
+		padding: 0;
+		width: 100%;
+	}
+	.header-tools {
+		height: $header-height;
+	}
 	.header-name {
 		@include sizing(font-size, 2);
-        flex-grow: 1;
-		min-width: auto;
-		order: 0;
+		display: table-cell;
+		margin: 0 $unit/2;
+		vertical-align: middle;
+		width: 15%;
 	}
 	.header-search {
-		order: 1;
-		flex-grow: 4;
-		align-self: center;
+		display: table-cell;
+		width: 70%;
+		margin: 0 $unit/2;
+		vertical-align: middle;
 	}
 	.header-filter { 
-		align-self: center;
-		flex-grow: 1;
-		order: 2;
-		margin-left: $unit;
+		display: table-cell;	
+		margin: 0 $unit/2;
+		vertical-align: middle;
+		width: 15%;
 	}
 }

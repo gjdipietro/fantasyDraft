@@ -14,7 +14,7 @@ module.exports = function(grunt) {
       },
       css: {
         files: '**/*.scss',
-        tasks: ['sass']
+        tasks: ['sass', 'autoprefixer']
       }
     },
 
@@ -34,7 +34,7 @@ module.exports = function(grunt) {
         expand: true,
         flatten: true,
         src: 'public/css/*.css',
-        dest: 'build/public/css'
+        dest: 'public/css'
       }
     },
 
