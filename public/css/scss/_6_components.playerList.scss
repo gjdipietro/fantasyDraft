@@ -1,6 +1,5 @@
 .playerList {
 	border-left: green 4px solid;
-	font-size: 1em;
 }
 	.playerList-info-name {
 		color: $white;
@@ -14,7 +13,7 @@
 
 .playerList_taken {
 	border-color: $UI_base_darker;
-	font-size: .75em;
+	@include sizing(font-size, 1);
 	opacity: .2;
 }
 	.playerList_taken td {
