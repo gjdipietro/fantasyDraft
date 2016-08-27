@@ -27,17 +27,17 @@
 	}
 		.header-search {
 			display: table-cell;
-			margin: 0 auto;
-			width: 70%;
+			padding-left: $unit/2;
+			width: 60%;
 		}
 		.header-filter {
 			display: table-cell;
 			margin: 0 auto;
-			width: 30%;
+			width: 40%;
 			text-align: center;
 		}
 
-@include breakpoint(full) {
+@include breakpoint(medium) {
 	.header {
 		display: table;
 		height: $header-height;
@@ -48,7 +48,7 @@
 			display: table-cell;
 			margin: 0 $unit/2;
 			vertical-align: middle;
-			width: 15%;
+			width: 25%;
 		}
 		.header-name_solo {
 			padding: 0;
@@ -59,14 +59,25 @@
 		}
 			.header-search {
 				display: table-cell;
-				width: 70%;
-				margin: 0 $unit/2;
+				width: 50%;
 				vertical-align: middle;
 			}
 			.header-filter { 
 				display: table-cell;	
-				margin: 0 $unit/2;
 				vertical-align: middle;
-				width: 15%;
+				width: 25%;
 			}
 }
+
+@include breakpoint(full) {
+	.header-name {
+		width: 15%;
+	}
+	.header-search {
+		width: 70%
+	}
+	.header-filter {
+		width: 15%
+	}
+}
+
