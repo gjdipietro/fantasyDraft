@@ -12,27 +12,27 @@
         controller: 'LeagueController',
         controllerAs: 'vm'
       })
-      .when('/draft/:id/', {
+      .when('/:id/draft/', {
         templateUrl: '/partials/draft.html',
         controller: 'DraftController',
         controllerAs: 'vm'
       })
-      .when('/undraft/:id/', {
+      .when('/:id/undraft/', {
         templateUrl: '/partials/undraft.html',
         controller: 'DraftController',
         controllerAs: 'vm'
       })
-      .when('/draft/:id/recap', {
-        templateUrl: '/partials/recap.html',
+      .when('/:id/board/', {
+        templateUrl: '/partials/board.html',
         controller: 'DraftController',
         controllerAs: 'vm'
       })
       .otherwise({
         redirectTo: '/'
       });
-    
     $locationProvider.html5Mode(true);
   }
 })();
+
 
 

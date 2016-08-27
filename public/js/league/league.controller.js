@@ -29,7 +29,7 @@ function LeagueController(firebaseDataService, $window) {
   // PRIVATE FUNCTIONS
   ///////////////////////////////////////////
   function _redirectToLeague(id) {
-    $window.location.href = '/draft/' + id;
+    $window.location.href = id + '/draft/';
   }
   function _shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
