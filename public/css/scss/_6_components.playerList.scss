@@ -1,22 +1,31 @@
-.playerList {
+.players-head th {
+	text-align: left;
+	&:last-child {
+		text-align: right;
+	}
+}
+.players-list {
 	border-left: green 4px solid;
 }
-	.playerList-info-name {
+	.players-list-name {
 		color: $white;
 	}
-	.playerList-info-team {
+	.players-list-team {
 		color: $accentLight;
 	    font-size: .75em;
 	}
 
 
 
-.playerList_taken {
+.players-list_taken {
 	border-color: $UI_base_darker;
 	@include sizing(font-size, 1);
 	opacity: .2;
+	.players-list-name {
+		text-decoration: line-through;
+	}
 }
-	.playerList_taken td {
+	.players-list_taken td {
 		padding-top: 0;
 		padding-bottom: 0;
 	}
