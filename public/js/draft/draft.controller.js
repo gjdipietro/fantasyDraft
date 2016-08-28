@@ -4,7 +4,6 @@
   function DraftController ($scope, $timeout, $q, firebaseDataService, playerService, $routeParams) {
     var vm = this;
     var leagueId = $routeParams.id;
-    var turn = 0;
     vm.players = [];
     vm.youtubeCode = '';
     vm.league = {};
@@ -40,12 +39,12 @@
       return vm.teams;
     }
     function draftPlayer(player, isDraft) {
-      var turn = {'turn' : _incrementDraft(vm.league.turn, vm.teams.length, isDraft)}
+      var turn = {'turn' : _updateTurn(vm.league.turn, vm.teams.length, isDraft)}
       firebaseDataService.updateLeague(turn, leagueId);
       firebaseDataService.draftPlayer(player, isDraft);
       getPlayerHighlights(player);
     }
-    //Get youtube video
+    
     function getPlayerHighlights(player) {
       var query = player.firstName + ' '  + player.lastName + ' highlights';
       return playerService
@@ -96,18 +95,26 @@
       }
     });
 
-
-    function _incrementDraft(turn, numOfTeams, isDraft) {
-      if (isDraft) {
-        if (turn+1 === numOfTeams)
-          return 0;
-        else 
-          return ++turn;
+    var draftDirection = 1;
+    function _updateTurn(turn, numOfTeams, isDraft) {
+      var totalTeams = numOfTeams-1;
+      if(isDraft){
+        if (draftDirection === 1) {
+          if (turn === totalTeams) {
+            draftDirection = -1;
+          }
+          turn++;
+          if (turn > totalTeams) turn = numOfTeams - 1;
+        }
+        else if (draftDirection === -1) {
+          if (turn === 0) {
+            draftDirection = 1;
+          }
+          turn--;
+          if (turn < 0) turn = 0;
+        }
+        return turn;
       }
-      else {
-        return --turn;
-      }
-      
     }
   }
 

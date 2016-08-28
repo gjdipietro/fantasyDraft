@@ -1,0 +1,16 @@
+.draftOrder {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+	.draftOrder-teams {
+		border-bottom: 1px solid $UI_base_lighter;
+		padding: $unit/2 $unit;
+	}
+	.draftOrder-teams:last-child {
+		border-bottom: 0;
+	}
+	.draftOrder-teams_drafting {
+		background: $accent;
+		color: $white;
+	}

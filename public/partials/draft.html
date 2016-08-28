@@ -18,7 +18,8 @@
 			</div>
 			<div class="header-filter">
 				<div class="dropdown" ng-class="{'dropdown_open': toggle}">
-					<button type="button" class="dropdown-toggle btn btn_clear" ng-click="toggle=!toggle; $event.stopPropagation();">{{vm.positionDisplay}}</button>
+					<button type="button" class="dropdown-toggle btn btn_clear" ng-click="toggle=!toggle; $event.stopPropagation();">{{vm.positionDisplay}}
+					</button>
 					<ul class="dropdown-menu">
 						<li>
 							<label for="All" class="hiddenInput dropdown-menu-item"> All
@@ -100,24 +101,6 @@
 
 		<aside  class="l-mainLeft-right">
 			<div class="card card_noPadding">
-				<style type="text/css">
-					.draftOrder {
-						margin: 0;
-						padding: 0;
-						list-style: none;
-					}
-					.draftOrder-teams {
-						border-bottom: 1px solid #000;
-						padding: 6px;
-					}
-					.draftOrder-teams:last-child {
-						border-bottom: 0;
-					}
-					.draftOrder-teams_drafting {
-						background: orange;
-						color:#FFF;
-					}
-				</style>
 				<ul class="draftOrder">
 					<li ng-repeat="team in vm.teams" class="draftOrder-teams" ng-class="{'draftOrder-teams_drafting': vm.league.turn===$index}">
 						{{team.name}}

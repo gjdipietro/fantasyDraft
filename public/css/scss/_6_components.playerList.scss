@@ -4,9 +4,6 @@
 		text-align: right;
 	}
 }
-.players-list {
-	border-left: $accent 4px solid;
-}
 	.players-list-name {
 		color: $white;
 	}
@@ -18,7 +15,6 @@
 
 
 .players-list_taken {
-	border-color: $UI_base_darker;
 	@include sizing(font-size, 1);
 	opacity: .2;
 	.players-list-name {
