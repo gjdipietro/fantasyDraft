@@ -13,7 +13,7 @@ function LeagueController(firebaseDataService, $window) {
     var leagueID;
     var newLeague = {
       'name': league.name,
-      'turn': 0
+      'turn': 0,
       'youtubeCode': ''
     };
     var teams = [];
