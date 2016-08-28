@@ -24,6 +24,8 @@
     };
     return service;
     function addLeague(league) {
+      league.turn = 0;
+      league.youtubeCode = '';
       return db.child('leagues').push(league).key;
     }
     function addTeamsToLeague (teams, leagueID) {
