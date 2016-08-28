@@ -63,7 +63,6 @@ function youtubeEmbed ($document, $q, $rootScope) {
                 playerVars: { 'autoplay': autoplay, 'controls': controls, 'fullscreen': 1 },
               });
               player.addEventListener("onStateChange", function(state){
-                console.log("state", state);
                 if(state.data==1){
                   scope.timer = $interval(function(){
                     if(scope.player)
