@@ -12,7 +12,9 @@ function LeagueController(firebaseDataService, $window) {
     //create the league
     var leagueID;
     var newLeague = {
-      'name': league.name
+      'name': league.name,
+      'turn': 0
+      'youtubeCode': ''
     };
     var teams = [];
     var teamstoPush = [];
@@ -24,7 +26,6 @@ function LeagueController(firebaseDataService, $window) {
     teams.forEach(function(team) {
       teamstoPush.push({'name': team})
     });
-    console.log(teamstoPush);
     firebaseDataService.addTeamsToLeague(teamstoPush, leagueID);
     _redirectToLeague(leagueID);
   }

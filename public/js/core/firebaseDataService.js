@@ -24,7 +24,6 @@
     };
     return service;
     function addLeague(league) {
-      league.turn = 0;
       return db.child('leagues').push(league).key;
     }
     function addTeamsToLeague (teams, leagueID) {
