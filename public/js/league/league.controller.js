@@ -6,7 +6,6 @@ function LeagueController(firebaseDataService, $window) {
 
   vm.league = {};
   vm.league.resort = 'keep';
-
   vm.createLeague = createLeague;
 
   function createLeague(league) {
@@ -16,12 +15,17 @@ function LeagueController(firebaseDataService, $window) {
       'name': league.name
     };
     var teams = [];
+    var teamstoPush = [];
     leagueID = firebaseDataService.addLeague(newLeague);
     teams = league.teams.match(/(?=\S)[^,]+?(?=\s*(,|$))/g);
     if (league.resort === 'sort') {
       _shuffle(teams);
     }
-    firebaseDataService.addTeamsToLeague(teams, leagueID);
+    teams.forEach(function(team) {
+      teamstoPush.push({'name': team})
+    });
+    console.log(teamstoPush);
+    firebaseDataService.addTeamsToLeague(teamstoPush, leagueID);
     _redirectToLeague(leagueID);
   }
 

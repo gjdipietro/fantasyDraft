@@ -15,14 +15,16 @@
     var service = {
       addLeague: addLeague,
       addTeamsToLeague : addTeamsToLeague,
-      getTeamInfo: getTeamInfo,
       getLeagueInfo: getLeagueInfo,
-      updateTeamInfo: updateTeamInfo,
       getPlayers: getPlayers,
-      draftPlayer: draftPlayer
+      getTeams: getTeams,
+      updateTeamInfo: updateTeamInfo,
+      draftPlayer: draftPlayer,
+      updateLeague: updateLeague
     };
     return service;
     function addLeague(league) {
+      league.turn = 0;
       return db.child('leagues').push(league).key;
     }
     function addTeamsToLeague (teams, leagueID) {
@@ -30,7 +32,6 @@
         return db.child('teams/' + leagueID).push(team);
       });
     }
-
     function getPlayers() {
       var players = db.child('players/');
       return $firebaseArray(players);
@@ -38,6 +39,10 @@
     function getLeagueInfo(leagueID) {
       var league = db.child('leagues/' + leagueID);
       return $firebaseObject(league);
+    }
+    function getTeams(leagueID) {
+      var teams = db.child('teams/' + leagueID);
+      return $firebaseArray(teams);
     }
     function draftPlayer (player, draft) {
       var index = player.rank - 1;
@@ -47,9 +52,8 @@
         return db.child('players/' + index).update({'drafted': 1});
       }
     }
-    function getTeamInfo(leagueID) {
-      var ref = db.child('teams/' + leagueID);
-      return $firebaseArray(ref);
+    function updateLeague(updates, leagueID) {
+      return db.child('leagues/' + leagueID).update(updates);
     }
     function updateTeamInfo(updates, teamID, leagueID) {
       return db.child('teams/' + leagueID + '/' + teamID).update(updates);

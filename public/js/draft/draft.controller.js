@@ -1,11 +1,14 @@
 (function() {
   'use strict';
 
-  function DraftController ($scope, $timeout, $q, firebaseDataService, $routeParams, playerService) {
+  function DraftController ($scope, $timeout, $q, firebaseDataService, playerService, $routeParams) {
     var vm = this;
+    var leagueId = $routeParams.id;
+    var turn = 0;
     vm.players = [];
     vm.youtubeCode = '';
     vm.league = {};
+    vm.teams = [];
     vm.positionDisplay = 'All Players';
     vm.search = {
       'position': ''
@@ -21,7 +24,8 @@
     =============================*/
     function _activate() {
       getPlayers();
-      getLeagueInfo($routeParams.id);
+      getLeagueInfo(leagueId);
+      getTeams(leagueId);
     }
     function getPlayers() {
       vm.players = firebaseDataService.getPlayers();
@@ -31,20 +35,27 @@
       vm.league = firebaseDataService.getLeagueInfo(leagueId);
       return vm.league;
     }
-    function draftPlayer(player, draft) {
-      firebaseDataService.draftPlayer(player, draft);
+    function getTeams(leagueId) {
+      vm.teams = firebaseDataService.getTeams(leagueId);
+      return vm.teams;
+    }
+    function draftPlayer(player, isDraft) {
+      var turn = {'turn' : _incrementDraft(vm.league.turn, vm.teams.length, isDraft)}
+      firebaseDataService.updateLeague(turn, leagueId);
+      firebaseDataService.draftPlayer(player, isDraft);
       getPlayerHighlights(player);
     }
     //Get youtube video
     function getPlayerHighlights(player) {
-      var query = player.firstName + ''  + player.lastName + ' highlights';
+      var query = player.firstName + ' '  + player.lastName + ' highlights';
       return playerService
         .getPlayerHighlights(query)
-        .then(getYoutubeCode)
+        .then(attachYoutubeCode)
         .catch(getYoutubeCodeFailed);
-      function getYoutubeCode(resp) {
-        vm.youtubeCode = resp.data.items[0].id.videoId;
-        return vm.youtubeCode;
+      function attachYoutubeCode(resp) {
+        var ytCode = {'youtubeCode': resp.data.items[0].id.videoId}
+        firebaseDataService.updateLeague(ytCode, leagueId);
+        return resp.data.items[0].id.videoId;
       }
       function getYoutubeCodeFailed(e) {
         return $q.reject(e);
@@ -84,6 +95,20 @@
           break;
       }
     });
+
+
+    function _incrementDraft(turn, numOfTeams, isDraft) {
+      if (isDraft) {
+        if (turn+1 === numOfTeams)
+          return 0;
+        else 
+          return ++turn;
+      }
+      else {
+        return --turn;
+      }
+      
+    }
   }
 
   angular
@@ -95,6 +120,7 @@
     '$timeout',
     '$q',
     'firebaseDataService',
+    'playerService',
     '$routeParams'
   ];
 })();

@@ -1,14 +1,1 @@
-<header class="header clearfix u-marginBottom">
-	<h1 class="header-name_solo"><a ng-href="{{vm.league.$id}}/draft/"></a></h1>
-</header>
-code: {{vm.youtubeCode}}
-<div class="l-mainLeft container clearfix">
-	<div class="card l-mainLeft-left">
-		<youtube-player width="640" height="390" videoid="{{vm.youtubeCode}}"></youtube>
-	</div>
-	<div class="card l-mainLeft-right">
-		<ul>
-			<li></li>
-		</ul>
-	</div>
-</div>
+<youtube-player width="640" height="390" videoid="{{vm.league.youtubeCode}}"></youtube>
