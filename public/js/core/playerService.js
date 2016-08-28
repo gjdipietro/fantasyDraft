@@ -9,35 +9,11 @@
 
   function playerService($http) {
     var service = {
-      getPlayers: getPlayers,
       getPlayerHighlights: getPlayerHighlights
     };
     return service;
-    
-
-    function getPlayers(offset) {
-      //http://api.fantasy.nfl.com/v1/players/advanced?season=2015&count=1&format=json&count=100
-      var url = 'http://api.fantasy.nfl.com/v1/players/editordraftranks?format=json&count=100';
-      if (offset) {
-        url += '&offset='+offset;
-      }
-      return $http({
-        method: 'GET', 
-        url: url,
-        cache: true
-      })
-      .success(function(resp, status, headers, config) {
-        resp.players.forEach(function(x) {
-          x.drafted = 0;
-        });
-        return resp;
-      })
-      .error(function(resp, status, headers, config) {
-      }); 
-    }
 
     function getPlayerHighlights(query) {
-      query = "antonio brown 2015 highlights";
       var key = 'AIzaSyAkL9b0eJwOTZE_-A8Q9HfgwzbFx9-4rjo';
       return $http({
         method: 'GET', 

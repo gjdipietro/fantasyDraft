@@ -33,7 +33,6 @@
               showinfo: 1,
               controls: 0,
             },
-
             height: scope.height,
             width: scope.width,
             videoId: scope.videoid

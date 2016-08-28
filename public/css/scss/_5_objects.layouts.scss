@@ -1,22 +1,29 @@
-/*==== right aside 
+/*==== rmain content on the left side
 ==============================================*/
-.l-rightAside {
-	
+.l-mainLeft {
+	position: relative;
+	width: 100%;
 }
-	.l-rightAside-left {
-
+	.l-mainLeft-left {
+		display: block;
 	}
-	.l-rightAside-right {
-
+	.l-mainLeft-right {
+		display: none;
 	}
 
 @include breakpoint(medium) {
-	
+	.l-mainLeft-left {
+		float: left;
+		width: 75%;
+	}
+	.l-mainLeft-right {
+		display: block;
+		float: left;
+		margin-left: 2%;
+		width: 23%;
+	}
 }
 
-@include breakpoint(full) {
-
-}
 
 
 

@@ -4,6 +4,7 @@
   function DraftController ($scope, $timeout, $q, firebaseDataService, $routeParams, playerService) {
     var vm = this;
     vm.players = [];
+    vm.youtubeCode = '';
     vm.league = {};
     vm.positionDisplay = 'All Players';
     vm.search = {
@@ -12,6 +13,7 @@
     //Interface
     vm.draftPlayer = draftPlayer;
     vm.clearSearch = clearSearch;
+
     _activate();
 
     /*============================
@@ -31,8 +33,25 @@
     }
     function draftPlayer(player, draft) {
       firebaseDataService.draftPlayer(player, draft);
+      getPlayerHighlights(player);
     }
-    //searching
+    //Get youtube video
+    function getPlayerHighlights(player) {
+      var query = player.firstName + ''  + player.lastName + ' highlights';
+      return playerService
+        .getPlayerHighlights(query)
+        .then(getYoutubeCode)
+        .catch(getYoutubeCodeFailed);
+      function getYoutubeCode(resp) {
+        vm.youtubeCode = resp.data.items[0].id.videoId;
+        return vm.youtubeCode;
+      }
+      function getYoutubeCodeFailed(e) {
+        return $q.reject(e);
+      }
+    }
+
+    //searching and filtering
     function clearSearch (clearAll, e) {
       e.preventDefault();
       vm.search.$ = '';
@@ -40,7 +59,6 @@
         vm.search.position = '';
       }
     }
-
     $scope.$watch('vm.search.position', function(value) {
       switch (value) {
         case '':
@@ -66,31 +84,6 @@
           break;
       }
     });
-
-
-
-
-
-
-
-
-
-
-    //Wait
-    function getPlayerHighlights() {
-      return playerService
-        .getPlayerHighlights()
-        .then(getYoutubeCode)
-        .catch(getYoutubeCodeFailed);
-
-      function getYoutubeCode(resp) {
-        vm.youtubeCode = resp.data.items[0].id.videoId;
-        return vm.youtubeCode;
-      }
-      function getYoutubeCodeFailed(e) {
-        return $q.reject(e);
-      }
-    }
   }
 
   angular
