@@ -49,7 +49,7 @@
     }
     
     function getPlayerHighlights(player) {
-      var query = player.firstName + ' '  + player.lastName + ' highlights';
+      var query = player.Name + ' highlights';
       return playerService
         .getPlayerHighlights(query)
         .then(attachYoutubeCode)
